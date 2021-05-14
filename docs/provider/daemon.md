@@ -306,6 +306,22 @@ $ tdex close
 
 This makes the selected market NOT available for trading.
 
+* Update the percentage fee
+
+```sh
+$ tdex percentagefee --basis_point 100
+```
+
+This updates the current market percentage fee to 1% (by default it's 0.25%).
+
+* Update the fixed fee
+
+```sh
+$ tdex fixedfee --base_fee 600 --quote_fee 20000
+```
+
+This updates the current market fixed fees (by default they're 0).
+
 * Change market making strategy to pluggable
 
 ```sh
