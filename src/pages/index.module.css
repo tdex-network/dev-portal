@@ -1,0 +1,59 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.section {
+  padding: 72px 0;
+}
+
+.sectionDark {
+  --ifm-heading-color: 'white';
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.sectionLight {
+  --ifm-heading-color: 'black';
+  background-color: var(--ifm-color-primary-lightest);
+}
+
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+  .hero {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .indexCtas {
+    justify-content: center;
+  }
+  .indexCtas a {
+    margin: 20px 36px;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.indexCtas {
+  --ifm-button-size-multiplier: 1.6;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.indexCtas a:last-of-type {
+  margin: 20px 36px;
+}
