@@ -1,0 +1,53 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+
+:root {
+  --ifm-color-primary: #313131;
+  --ifm-color-primary-dark: #2c2c2c;
+  --ifm-color-primary-darker: #2a2a2a;
+  --ifm-color-primary-darkest: #222222;
+  --ifm-color-primary-light: #363636;
+  --ifm-color-primary-lighter: #383838;
+  --ifm-color-primary-lightest: #404040;
+  /**/
+  --ifm-color-secondary: #c6c6c6;
+  --ifm-color-secondary-dark: #b2b2b2;
+  --ifm-color-secondary-darker: #a8a8a8;
+  --ifm-color-secondary-darkest: #8b8b8b;
+  --ifm-color-secondary-light: #dadada;
+  --ifm-color-secondary-lighter: #e4e4e4;
+  --ifm-color-secondary-lightest: #ffffff;
+  /**/
+  --ifm-color-tertiary: #12ff00;
+  --ifm-color-tertiary-dark: #10e600;
+  --ifm-color-tertiary-darker: #0fd900;
+  --ifm-color-tertiary-darkest: #0db300;
+  --ifm-color-tertiary-light: #2aff1a;
+  --ifm-color-tertiary-lighter: #36ff26;
+  --ifm-color-tertiary-lightest: #59ff4d;
+  /**/
+  --ifm-color-quaternary: #035543;
+  --ifm-color-quaternary-dark: #034c3c;
+  --ifm-color-quaternary-darker: #034839;
+  --ifm-color-quaternary-darkest: #023b2f;
+  --ifm-color-quaternary-light: #035e4a;
+  --ifm-color-quaternary-lighter: #03624d;
+  --ifm-color-quaternary-lightest: #046e57;
+  /**/
+  /**/
+  --ifm-code-font-size: 95%;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgb(72, 77, 91);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}

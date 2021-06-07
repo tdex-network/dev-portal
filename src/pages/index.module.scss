@@ -1,10 +1,35 @@
 /* stylelint-disable docusaurus/copyright-header */
 
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
+/* Hero */
+.heroBanner {
+  height: 100vh;
+  padding: 50px;
+  .tdexLogo {
+    width: 60vw;
+    height: 100%;
+  }
+  .titles {
+    position: absolute;
+    top: 30vh;
+    left: 50%;
+    width: 90vw;
+    margin-left: -45vw;
+    color: var(--ifm-color-secondary-light);
+    text-shadow: 0 -2px var(--ifm-color-primary-darkest);
+    
+    h1 {
+      font-size: 5rem;
+      letter-spacing: 1.8rem;
+      margin-bottom: 40px;
+    }
+    h2 {
+      font-size: 2.5rem;
+      letter-spacing: 0.8rem;
+    }
+  }
+}
 
+/**/
 .section {
   padding: 72px 0;
 }
@@ -17,13 +42,6 @@
 .sectionLight {
   --ifm-heading-color: 'black';
   background-color: var(--ifm-color-primary-lightest);
-}
-
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
 }
 
 @media only screen and (max-width: 768px) {

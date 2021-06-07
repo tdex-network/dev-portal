@@ -76,6 +76,7 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} TDEX Network. Built with Docusaurus.`,
     },
   },
+  plugins: ['docusaurus-plugin-sass'],
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -93,7 +94,7 @@ module.exports = {
             'https://github.com/tdex-network/dev-portal/edit/master/website/blog/',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/custom.scss'),
         },
       },
     ],
