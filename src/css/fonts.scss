@@ -1,0 +1,31 @@
+@font-face {
+	font-family: 'DMSans';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../../static/fonts/DMSans-Regular.woff2') format('woff2'),
+	url('../../static/fonts/DMSans-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'DMSans';
+	font-style: normal;
+	font-weight: 500 700;
+	src: url('../../static/fonts/DMSans-Bold.woff2') format('woff2'),
+	url('../../static/fonts/DMSans-Bold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'DMMono';
+	src: url('../../static/fonts/DMMono-Regular.woff2') format('woff2'),
+	url('../../static/fonts/DMMono-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'DMMono';
+	src: url('../../static/fonts/DMMono-Medium.woff2') format('woff2'),
+	url('../../static/fonts/DMMono-Medium.woff') format('woff');
+	font-weight: 500 700;
+	font-style: normal;
+}

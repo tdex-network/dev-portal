@@ -13,11 +13,16 @@ module.exports = {
     colorMode: {
       defaultMode: 'dark',
     },
+    prism: {
+      theme: require('prism-react-renderer/themes/github'),
+      darkTheme: require('prism-react-renderer/themes/dracula'),
+    },
     navbar: {
       title: 'Developer Portal',
       logo: {
         alt: 'TDEX logo',
         src: 'img/tdex-logo.png',
+        srcDark: 'img/tdex-logo.png',
       },
       items: [
         {
@@ -28,7 +33,7 @@ module.exports = {
         },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
-          href: 'https://github.com/tdex-network/dev-portal',
+          href: 'https://github.com/tdex-network',
           label: 'GitHub',
           position: 'right',
         },
@@ -68,7 +73,7 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/tdex-network/dev-portal',
+              href: 'https://github.com/tdex-network',
             },
           ],
         },
@@ -85,13 +90,18 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/tdex-network/dev-portal/edit/master/website/',
+            'https://github.com/tdex-network/dev-portal/edit/master/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/tdex-network/dev-portal/edit/master/website/blog/',
+            'https://github.com/tdex-network/dev-portal/edit/master/blog/',
+        },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
+          trailingSlash: false,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),

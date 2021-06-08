@@ -15,63 +15,53 @@
     width: 90vw;
     margin-left: -45vw;
     color: var(--ifm-color-secondary-light);
-    text-shadow: 0 -2px var(--ifm-color-primary-darkest);
+    text-shadow: 0 -3px 3px var(--ifm-color-primary-darkest), 0 3px 3px var(--ifm-color-primary-darkest);
     
     h1 {
-      font-size: 5rem;
-      letter-spacing: 1.8rem;
+      font-family: var(--ifm-font-sub-heading);
+      font-size: var(--ifm-font-size-xxl);
+      @media (min-width: 760px) {
+        letter-spacing: 2rem;
+      }
       margin-bottom: 40px;
     }
     h2 {
-      font-size: 2.5rem;
-      letter-spacing: 0.8rem;
+      font-family: var(--ifm-font-heading);
+      font-size: var(--ifm-font-size-xl);
+      @media (min-width: 760px) {
+        letter-spacing: 0.8rem;
+      }
     }
   }
 }
 
-/**/
-.section {
-  padding: 72px 0;
-}
-
-.sectionDark {
-  --ifm-heading-color: 'white';
+/* Call to action */
+.call2action {
   background-color: var(--ifm-color-emphasis-100);
-}
-
-.sectionLight {
-  --ifm-heading-color: 'black';
-  background-color: var(--ifm-color-primary-lightest);
-}
-
-@media only screen and (max-width: 768px) {
-  .hero {
-    padding-left: 20px;
-    padding-right: 20px;
+  padding-bottom: 60px;
+  padding-top: 30px;
+  h3 {
+    margin: 30px 0;
   }
-  .indexCtas {
+}
+.btnContainer {
+  height: 55px;
+  @media (max-width: 800px) {
+    height: 170px;
+  }
+  justify-content: space-evenly;
+  a {
+    align-items: center;
+    display: flex;
     justify-content: center;
+    --ifm-col-width: calc(4 / 12 * 100%);
+    flex: 0 0 var(--ifm-col-width);
+    max-width: var(--ifm-col-width);
+    @media (max-width: 800px) {
+      margin: 20px 0;
+      --ifm-col-width: calc(8 / 12 * 100%);
+      flex: 0 0 var(--ifm-col-width);
+      max-width: var(--ifm-col-width);
+    }
   }
-  .indexCtas a {
-    margin: 20px 36px;
-  }
-}
-
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.indexCtas {
-  --ifm-button-size-multiplier: 1.6;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  margin-top: 24px;
-}
-
-.indexCtas a:last-of-type {
-  margin: 20px 36px;
 }
