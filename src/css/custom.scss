@@ -1,0 +1,123 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+@import "./fonts.scss";
+@import "./toc.scss";
+
+/* You can override the default Infima variables here. */
+
+:root {
+	--ifm-color-primary: #313131;
+	--ifm-color-primary-dark: #2c2c2c;
+	--ifm-color-primary-darker: #2a2a2a;
+	--ifm-color-primary-darkest: #222222;
+	--ifm-color-primary-light: #363636;
+	--ifm-color-primary-lighter: #383838;
+	--ifm-color-primary-lightest: #404040;
+	/**/
+	--ifm-color-secondary: #c6c6c6;
+	--ifm-color-secondary-dark: #b2b2b2;
+	--ifm-color-secondary-darker: #a8a8a8;
+	--ifm-color-secondary-darkest: #8b8b8b;
+	--ifm-color-secondary-light: #dadada;
+	--ifm-color-secondary-lighter: #efefef;
+	--ifm-color-secondary-lightest: #ffffff;
+	/**/
+	--ifm-color-tertiary: #12ff00;
+	--ifm-color-tertiary-dark: #10e600;
+	--ifm-color-tertiary-darker: #0fd900;
+	--ifm-color-tertiary-darkest: #0db300;
+	--ifm-color-tertiary-light: #2aff1a;
+	--ifm-color-tertiary-lighter: #36ff26;
+	--ifm-color-tertiary-lightest: #59ff4d;
+	/**/
+	/* Fonts */
+	--ifm-code-font-size: 95%;
+	--ifm-font-family-base: 'DMSans';
+	--ifm-font-family-monospace: 'DMMono';
+	@media (min-width: 1201px) {
+		--ifm-font-size-xxl: 5rem;
+		--ifm-font-size-xl: 2.5rem;
+		--ifm-font-size-l: 2rem;
+		--ifm-font-size-md: 1.5rem;
+		--ifm-font-size-main: 1rem;
+		--ifm-font-size-sub: 0.8rem;
+	}
+	@media (min-width: 1025px) and (max-width: 1200px) {
+		--ifm-font-size-xxl: 4rem;
+		--ifm-font-size-xl: 2rem;
+		--ifm-font-size-l: 1.5rem;
+		--ifm-font-size-md: 1rem;
+		--ifm-font-size-main: 0.9rem;
+		--ifm-font-size-sub: 0.7rem;
+	}
+	@media (min-width: 769px) and (max-width: 1024px) {
+		--ifm-font-size-xxl: 3rem;
+		--ifm-font-size-xl: 1.75rem;
+		--ifm-font-size-l: 1.25rem;
+		--ifm-font-size-md: 1rem;
+		--ifm-font-size-main: 0.85rem;
+		--ifm-font-size-sub: 0.65rem;
+	}
+	@media (min-width: 481px) and (max-width: 768px) {
+		--ifm-font-size-xxl: 2.75rem;
+		--ifm-font-size-xl: 1.6rem;
+		--ifm-font-size-l: 1.1rem;
+		--ifm-font-size-md: 0.95rem;
+		--ifm-font-size-main: 0.8rem;
+		--ifm-font-size-sub: 0.6rem;
+	}
+	@media (min-width: 321px) and (max-width: 480px) {
+		--ifm-font-size-xxl: 2.5rem;
+		--ifm-font-size-xl: 1.5rem;
+		--ifm-font-size-l: 1rem;
+		--ifm-font-size-md: 0.9rem;
+		--ifm-font-size-main: 0.8rem;
+		--ifm-font-size-sub: 0.6rem;
+	}
+	@media (max-width: 320px) {
+		--ifm-font-size-xxl: 2rem;
+		--ifm-font-size-xl: 1.25rem;
+		--ifm-font-size-l: 0.9rem;
+		--ifm-font-size-md: 0.8rem;
+		--ifm-font-size-main: 0.7rem;
+		--ifm-font-size-sub: 0.6rem;
+	}
+	/* Breakpoints */
+	--ifm-breakpoint-xs: 320px;
+	--ifm-breakpoint-sm: 480px;
+	--ifm-breakpoint-md: 768px;
+	--ifm-breakpoint-l: 1024px;
+	--ifm-breakpoint-xl: 1200px;
+	/**/
+	--ifm-button-background-color: var(--ifm-color-tertiary);
+	--ifm-button-color: var(--ifm-color-primary-darker);
+	--ifm-button-size-multiplier: 1.6;
+	--ifm-link-color: var(--ifm-color-tertiary-darker);
+	--ifm-link-hover-decoration: none;
+	--ifm-link-hover-color: var(--ifm-color-tertiary);
+	--ifm-menu-color-background-active: var(--ifm-color-primary);
+	--ifm-menu-color-active: var(--ifm-color-tertiary);
+	--ifm-navbar-link-hover-color: var(--ifm-color-tertiary);
+	--ifm-pagination-nav-color-hover: var(--ifm-color-tertiary-darker);
+	--ifm-toc-link-color: #fff;
+}
+
+html[data-theme='light'] {
+	--ifm-button-background-color: var(--ifm-color-tertiary);
+	--ifm-button-color: var(--ifm-color-primary-darker);
+	--ifm-footer-link-hover-color: var(--ifm-color-tertiary-darker);
+	--ifm-link-color: var(--ifm-color-tertiary-darkest);
+	--ifm-link-hover-color: var(--ifm-color-tertiary-darker);
+	--ifm-menu-color-active: var(--ifm-color-tertiary-darker);
+	--ifm-menu-color-background-active: var(--ifm-color-secondary-lighter);
+	--ifm-navbar-link-hover-color: var(--ifm-color-tertiary-darker);
+	--ifm-toc-link-color: var(--ifm-color-primary);
+}
+
+.footer__copyright {
+	font-family: 'DMMono', sans-serif;
+}

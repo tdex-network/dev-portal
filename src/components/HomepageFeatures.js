@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import styles from './HomepageFeatures.module.css';
+import styles from './HomepageFeatures.module.scss';
 
 const FeatureList = [
   {
@@ -26,7 +26,7 @@ const FeatureList = [
     Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Tap into global inter-connected network of liquidity providers exposing the same open API sepcification. Traders can switch seamlessy between single providers or trading pools.
+        Tap into global inter-connected network of liquidity providers exposing the same open API specification. Traders can switch seamlessly between single providers or trading pools.
       </>
     ),
   },
