@@ -12,9 +12,15 @@ Guaranteed arbitrage opportunities from price fluctuations should push a steady 
 A liquidity provider has full control over the market making strategy to apply needed to calculate the **market rate** at which to accept trades. That being said, there is a possibility to apply an automated market-making relying only on the reserves balances and the amount requested by the trader, without the need to connect to an external price feed. The default strategy of the alpha daemond is the *constant product market-making*. In short, this model generates a full order-book based on an initial price for the market. Every transaction that occurs on this market will adjust the prices of the market accordingly. It's a basic supply and demand automated market making system. 
 
 
-**Provide liquidity for traders and earn fees:**
+### Provide liquidity for traders and earn fees
 
 * [Install and run TDEX Daemon on your server](daemon.md)
 * Install and run on RaspiBlitz (Coming Soon)
 * One-click deploy on Ocelot.net (Coming Soon)
 * One-click deploy on Amazon Web Services (Coming Soon)
+
+
+### Register yoy provider on the network
+
+* [Register your provider on TDEX registry](registry.md)
+* Create your own registry (Coming soon)
