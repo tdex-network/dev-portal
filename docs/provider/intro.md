@@ -20,7 +20,7 @@ A liquidity provider has full control over the market making strategy to apply n
 * One-click deploy on Amazon Web Services (Coming Soon)
 
 
-### Register yoy provider on the network
+### Register the provider on the network
 
 * [Register your provider on TDEX registry](registry.md)
 * Create your own registry (Coming soon)
