@@ -194,9 +194,10 @@ This updates the current market price to be used for future trades.
 $ tdex open
 ```
 
-The market is finally ready to accept trade proposals from all over the world, you can always check their status with:
+Congratulations! Your daemon is now ready to accept trade proposals from all over the world.
+
+Check all the trades served by the daemon (including those ongoing and those that have been rejected or expired) with:
 
 ```sh
-
 $ tdex listtrades
 ```
