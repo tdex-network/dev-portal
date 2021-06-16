@@ -85,8 +85,6 @@ You will find the data directory at the path `~/.tdex-daemon` if using Linux or,
 
 Next step is to [configure the operator CLI](#configure-operator-cli).
 
-<!-- Now you are ready to [deposit funds](setup_wallet.md) to create your first market and start accepting incoming trades. -->
-
 ## Configure operator CLI
 
 Now that your daemon is up and running, you need to configure the `tdex` CLI to communicate with the Operator interface.
