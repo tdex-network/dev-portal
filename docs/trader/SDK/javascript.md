@@ -38,6 +38,32 @@ const options: IdentityOpts<MnemonicOpts> = {
 const identity = new Mnemonic(options);
 ```
 
+#### Restore your Identity
+
+`Restorer` are functions using to restore the mnemonic **addresses**. `mnemonicRestorerFromEsplora` is one of the restorer exported by [LDK](https://github.com/vulpemventures/ldk). It requests an Esplora endpoint to inspect the blockchain. It follows the spec described by [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#the-key-tree).
+
+```typescript
+const identity = await mnemonicRestorerFromEsplora(new Mnemonic(options))({
+  esploraURL: "https://blockstream.info/liquid/api", // blockstream explorer URL
+  gapLimit: 20, // default gap limit for BIP44/BIP32 wallet
+});
+
+// the identity's addresses already used are re-generated
+const notUsedAddress = await identity.getNextAddress();
+```
+
+#### Fetch and unblind UTXOS
+
+`fetchAndUnblindUtxos` uses an Esplora endpoint to fetch the identity's unspents.
+
+```typescript
+const addrs = await identity.getAddresses(); // return all the addresses restored/generated
+const utxos = await fetchAndUnblindUtxos(
+  addrs, // addrs contains the private blinding keys using to unblind the utxos
+  "https://blockstream.info/liquid/api"
+);
+```
+
 #### Send a confidential transaction with Mnemonic
 
 ```js
@@ -122,6 +148,19 @@ console.log(finalizedTx);
 ### Trade
 
 Trade against a Liquidity provider in the TDEX network. This fully implements [**BOTD#4**](https://github.com/tdex-network/tdex-specs/blob/master/04-trade-protocol.md)
+
+The `Trade` object provides the API using to interact with TDex daemons.
+
+```typescript
+import { Trade } from "tdex-sdk";
+
+const trade = new Trade({
+  providerUrl: "provider.tdex.network:9945",
+  explorerUrl: "https://blockstream.info/liquid/api",
+  utxos: [],
+  coinSelector: greedyCoinSelector(),
+});
+```
 
 ```js
 import { Trade, IdentityType, TradeType, fetchBalances } from "tdex-sdk";
