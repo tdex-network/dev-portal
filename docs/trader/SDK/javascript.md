@@ -149,129 +149,94 @@ console.log(finalizedTx);
 
 Trade against a Liquidity provider in the TDEX network. This fully implements [**BOTD#4**](https://github.com/tdex-network/tdex-specs/blob/master/04-trade-protocol.md)
 
-The `Trade` object provides the API using to interact with TDex daemons.
+The `Trade` object provides the API using to interact with TDex daemons. The constructor takes a configuration object with the following options:
+
+- `providerUrl`: the TDex daemon endpoint, hosted by a Liquidity provider.
+- `explorerUrl`: the Esplora endpoint using to get blockchain data.
+- `utxos`: the trader's unspents. You can [fetch them](#fetch-and-unblind-utxos) with LDK.
+- `coinSelector`: specify the strategy used to select utxos during transaction creation.
 
 ```typescript
-import { Trade } from "tdex-sdk";
-
 const trade = new Trade({
   providerUrl: "provider.tdex.network:9945",
   explorerUrl: "https://blockstream.info/liquid/api",
-  utxos: [],
-  coinSelector: greedyCoinSelector(),
+  utxos: traderUtxos, // an array of UtxoInterface
+  coinSelector: greedyCoinSelector(), // this is exported by tdex-sdk
 });
 ```
 
-```js
-import { Trade, IdentityType, TradeType, fetchBalances } from "tdex-sdk";
+> `utxos` are [JS objects](https://github.com/vulpemventures/ldk/blob/master/src/types.ts#L33) wrapping utxo's data. They can be fetched without LDK. However, they **must** be unblinded in case of [confidential outputs](https://elementsproject.org/features/confidential-transactions).
 
-// Connect to specific provider and use Blockstream Esplora to source blockchain data.
-// Change the providerUrl with the one you want to trade with.
-const trade = new Trade({
-  providerUrl: "provider.tdex.network:9945",
-  explorerUrl: "https://blockstream.info/liquid/api",
-  identity: {
-    chain: "liquid", // or regtest
-    type: IdentityType.PrivateKey,
-    value: {
-      signingKeyWIF: "<WIF>",
-      blindingKeyWIF: "<WIF>",
-    },
-  },
+#### Market
+
+We'll trade on LBTC<->USDT market. `MarketInterface` describes the market with asset hashes.
+
+```typescript
+const market = {
+  baseAsset: "6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d", // L-BTC
+  quoteAsset:
+    "c5870288a7c9eb5db398a5b5e7221feb9753134439e8ed9f569b0eea5a423330", // USDT
+};
+```
+
+#### Sell L-BTC
+
+Then, using the `Trade` instance, we are able to sell 10 000 sats of L-BTC. At this step, you need an [IdentityInterface](#identity) in order to sign the PSET.
+
+```typescript
+// sell ALWAYS send baseAsset and receive quoteAsset
+// `trade` will select the baseAsset unspents.
+const tradeTxID = await trade.sell({
+  market, // our MarketInterface object
+  amount: 100000, // expressed in satoshis
+  asset: market.baseAsset,
+  identity: identityInterface,
 });
+```
 
-// Get a new address and his blinnding private key from identity interface
-const { confidentialAddress, blindingPrivateKey } =
-  trade.identity.getNextAddress();
+#### Buy L-BTC
 
-// Receiving Address and Change address are the same with Identity.PrivateKey
-const changeAddrAndBlidning = trade.identity.getNextChangeAddress();
+Contrary to `trade.sell`, the `trade.buy` function lets to buy the baseAsset (L-BTC here).
 
-// Get the balances grouped by assetHash
-const balances = fetchBalances(
-  confidentialAddress,
-  blindingPrivateKey,
-  "https://blockstream.info/liquid/api"
-);
+```typescript
+// sell ALWAYS send quoteAsset and receive baseAsset
+// `trade` will select the quoteAsset unspents.
+const tradeTxID = await trade.buy({
+  market, // our MarketInterface object
+  amount: 100000, // expressed in satoshis
+  asset: market.baseAsset,
+  identity: identityInterface,
+});
+```
 
-// Asset hash of the market to trade
-const LBTC = "6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d";
-const USDT = "c5870288a7c9eb5db398a5b5e7221feb9753134439e8ed9f569b0eea5a423330";
+> The `asset` parameter is using to specify the amount of base or quote asset in a trade. Thus, if u want to sell the **base asset** in order to receive a certain amount of **quote asset**, you can specify it in `sell()` parameter object.
+>
+> ```typescript
+> // sell baseAsset and receive quoteAsset
+> const tradeTxID = await trade.sell({
+>   market,
+>   amount: 50000,
+>   asset: market.quoteAsset, // receive 50000 sats of *quoteAsset* but still send *baseAsset*!
+>   identity: identityInterface,
+> });
+> ```
 
-//BUY = quote asset as input
-// SELL = base asset as input
-//
-// If the type of the trade is BUY it means the base asset will be received by
-// the trader.
-//
-// If the type of the trade is SELL it means the base asset will be sent by
-// the trader.
-const preview = await trade.preview({
+#### Preview
+
+The `trade.preview` method can be used to compute market's prices.
+
+```typescript
+const {
+  assetToBeSent
+  amountToBeSent // amount of baseAsset satoshis to sell in order to receive 50000 quoteAsset
+  assetToReceive
+  amountToReceive
+} = await trade.preview({
   market,
   tradeType: TradeType.SELL,
-  amount: 5000000,
+  amount: 50000,
+  asset: market.quoteAsset
 });
-
-console.log(preview);
-/*
-{
-  "amountToBeSent": 5000000,
-  "amountToReceive": 23869047,
-  "assetToBeSent": "6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d",
-  "assetToReceive": "c5870288a7c9eb5db398a5b5e7221feb9753134439e8ed9f569b0eea5a423330",
-}
-*/
-
-// Sell some LBTCs
-const txid = await trade.sell({
-  market: {
-    baseAsset: LBTC,
-    quoteAsset: USDT,
-  },
-  amount: 100000, //satoshis unit
-});
-
-// Buy some LBTCs
-const txid = await trade.buy({
-  market: {
-    baseAsset: LBTC,
-    quoteAsset: USDT,
-  },
-  amount: 50000, //satoshis unit
-});
-```
-
-#### With Mnemonic (HD Wallet)
-
-```js
-const explorerUrl = "http://localhost:3001";
-
-// Or Use HD wallet from mnemonic for both signign and blinding
-const tradeWithMnemonic = new Trade({
-  providerUrl: "localhost:9945",
-  explorerUrl: explorerUrl,
-  identity: {
-    chain: "regtest", // or regtest
-    type: IdentityType.Mnemonic,
-    value: {
-      mnemonic:
-        "deny pyramid explain dragon crane oxygen nature flee version cat fatal kingdom tray suspect broccoli ship rival hard add cruel defy library picture unaware",
-    },
-    initializeFromRestorer: true, // Scan the blockchain and restore previous addresses
-    restorer: new EsploraIdentityRestorer(explorerUrl),
-  },
-});
-
-// Wait for restore to be be completed. Can take a while.
-try {
-  await tradeWithMnemonic.identity.isRestored();
-} catch (e) {
-  console.error(e);
-}
-
-// Now you can get addresses
-tradeWithMnemonic.identity.getNextAddress();
-tradeWithMnemonic.identity.getNextChangeAddress();
 ```
 
 ### Swap
@@ -324,73 +289,4 @@ const swapCompleteMessage = swap.complete({
 
 // Alice can sends the completed swap to Bob
 // Now Bob finalize the transaction and broadcast it
-```
-
-### Wallet
-
-An easy-to-use transaction builder using to create swap transactions.
-
-#### Create a wallet from an Identity with `walletFromAddresses`
-
-```js
-// Create the identity
-const sender = new PrivateKey({
-  chain: "regtest",
-  type: IdentityType.PrivateKey,
-  value: {
-    signingKeyWIF: "cPNMJD4VyFnQjGbGs3kcydRzAbDCXrLAbvH6wTCqs88qg1SkZT3J",
-    blindingKeyWIF: "cRdrvnPMLV7CsEak2pGrgG4MY7S3XN1vjtcgfemCrF7KJRPeGgW6",
-  },
-});
-
-// Use the addresses to create the wallet
-const senderWallet = walletFromAddresses(sender.getAddresses(), "regtest");
-```
-
-#### Create transaction using the wallet
-
-```js
-// createTx returns an empty transaction.
-const tx = senderWallet.createTx();
-
-// fetch the utxos for each wallet's address
-const arrayOfArrayOfUtxos = await Promise.all(
-  // fetchUtxos is an utility function using to retreive utxos of a given address (1st argument) from an Esplora endpoint (2nd argument)
-  senderWallet.addresses.map((a) =>
-    fetchUtxos(a.confidentialAddress, "https://nigiri.network/liquid/api")
-  )
-);
-// Flat them
-const utxos = arrayOfArrayOfUtxos.flat();
-
-// lets enrich them with confidential proofs using the prevout tx hexes
-// /!\ we need proofs to unblind the utxo outputs.
-// first, fetch the transaction's hex using another Esplora util function: fetchTxHex
-const txHexes = await Promise.all(
-  utxos.map((utxo) => fetchTxHex(utxo.txid, explorerUrl))
-);
-// select the outputs from the hex values using liquidjs-lib
-const outputs = txHexes.map(
-  (hex, index) => Transaction.fromHex(hex).outs[utxos[index].vout]
-);
-// assign the prevout to each utxo
-utxos.forEach((utxo, index) => {
-  utxo.prevout = outputs[index];
-});
-
-// This will add output that send 50000 LBTC satoshis to the recipient address.
-// it will also adds the inputs according to the provided utxos
-const unsignedTx = senderWallet.buildTx(
-  tx,
-  // senderUtxos can be fetched using the explorer endpoint
-  senderUtxos,
-  // the recipient address
-  "el1qqt4rfky0utmv8durktmmg3athy4qfmtqz5xwvsnrty7zhujtxcthdqzncgk7vkfgpvm9varxetmp0mvxkl9tzgxq79n3mdn3v",
-  // the amount to send, in satoshis
-  50000,
-  // the asset hash to send
-  "5ac9f65c0efcc4775e0baec4ec03abdde22473cd3cf33c0419ca290e0751b225",
-  // the change address to use
-  sender.getNextChangeAddress().confidentialAddress
-);
 ```
