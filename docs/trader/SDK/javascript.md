@@ -125,9 +125,9 @@ let tx = wallet.buildTx(
 // we can blind our transaction using identity
 tx = await identity.blindPset(
   tx,
-  [0, 1],
+  [0, 1], // 1 is change, 0 is the recipient output
   new Map().set(
-    0,
+    0, // here, we only need to specify blinding key for outputs not owned by our identity
     address.fromConfidential(recipientInfos.address).blindingKey.toString("hex")
   )
 );
