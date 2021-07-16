@@ -2,6 +2,8 @@
 
 JavaScript SDK for building trader-facing applications on top of TDEX
 
+https://github.com/TDex-network/tdex-sdk
+
 ## ⬇️ Install
 
 - Install with **yarn**
