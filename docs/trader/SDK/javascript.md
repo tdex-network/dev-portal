@@ -4,7 +4,7 @@ JavaScript SDK for building trader-facing applications on top of TDEX
 
 ## ⬇️ Install
 
-* Install with **yarn**
+- Install with **yarn**
 
 ```sh
 $ yarn add tdex-sdk
@@ -18,14 +18,113 @@ $ npm install --save tdex-sdk
 
 ## 📄 Usage
 
+### Identity
+
+Identities are Javascript objects representing the trader's private key(s). They come from [Liquid Development Kit (LDK)](https://github.com/vulpemventures/ldk) and implement the [IdentityInterface](https://github.com/vulpemventures/ldk/blob/master/src/identity/identity.ts#L32-L52). `tdex-sdk` re-exports LDK classes, types and functions.
+
+#### Instanciate a `Mnemonic` Identity
+
+```js
+import { IdentityOpts, MnemonicOpts, IdentityType, Mnemonic } from "tdex-sdk";
+
+const options: IdentityOpts<MnemonicOpts> = {
+  chain: "regtest",
+  type: IdentityType.Mnemonic,
+  opts: {
+    mnemonic: "<MNEMONIC WORDS>",
+  },
+};
+
+const identity = new Mnemonic(options);
+```
+
+#### Send a confidential transaction with Mnemonic
+
+```js
+import {
+  walletFromAddresses,
+  Mnemonic,
+  IdentityType,
+  greedyCoinSelector,
+  address,
+  mnemonicRestorerFromEsplora,
+  decodePset,
+} from "tdex-sdk";
+
+// we'll send 850 sats of LBTC (5ac9f65...)
+const recipientInfos = {
+  value: 850,
+  asset: "5ac9f65c0efcc4775e0baec4ec03abdde22473cd3cf33c0419ca290e0751b225",
+  address:
+    "Azpk3oLvSDtYScUcWTc2VDyqj78HmNqPuoYDEGMZtPNLEJmNz33cy36S1cJXAAoikLVf2Zv4muNM2FCQ",
+};
+
+const network = "regtest"; // "liquid" for mainchain
+const esploraURL = "http://localhost:3001"; // LDK uses Esplora endpoints to fetch blockchain data
+// you can use Nigiri to run a local regtest node: https://nigiri.vulpem.com/
+
+// Create the Identity
+const identity = new Mnemonic({
+  chain: network,
+  type: IdentityType.Mnemonic,
+  opts: {
+    mnemonic: "<MNEMONIC WORDS>",
+  },
+});
+
+// Let's use Esplora to re-generate already used addresses (LDK restorer)
+const restoredIdentity = await mnemonicRestorerFromEsplora(identity)({
+  esploraURL,
+  gapLimit: 20,
+});
+
+// Get addresses from identity
+const addresses = await restoredIdentity.getAddresses();
+
+// create a WalletInterface object from addresses, we'll use it to build the PSET
+// `walletFromAddresses` will fetch and unblind unspents.
+const wallet = await walletFromAddresses(addresses, esploraURL, network);
+
+const changeAddress = await identity.getNextChangeAddress();
+
+// buildTx lets to create PSET ready to be signed by Identity
+let tx = wallet.buildTx(
+  wallet.createTx(), // -> create an empty PSET
+  [recipientInfos], // the outputs to create
+  greedyCoinSelector(), // how the build must select the unspents to fund the transaction
+  (asset) => changeAddress.confidentialAddress, // specify to builder the change address to use
+  true // will add the fee output, default to false
+);
+
+// we can blind our transaction using identity
+tx = await identity.blindPset(
+  tx,
+  [0, 1],
+  new Map().set(
+    0,
+    address.fromConfidential(recipientInfos.address).blindingKey.toString("hex")
+  )
+);
+
+// Now we can sign with identity abstraction
+const signedTx = await identity.signPset(tx);
+
+// finalize the tx and encode to hex
+const finalizedTx = decodePset(signedTx)
+  .finalizeAllInputs()
+  .extractTransaction()
+  .toHex();
+
+// finalizedTx can be broadcasted
+console.log(finalizedTx);
+```
+
 ### Trade
 
 Trade against a Liquidity provider in the TDEX network. This fully implements [**BOTD#4**](https://github.com/tdex-network/tdex-specs/blob/master/04-trade-protocol.md)
 
-#### With private key
-
 ```js
-import { Trade, IdentityType, TradeType, fetchBalances } from 'tdex-sdk';
+import { Trade, IdentityType, TradeType, fetchBalances } from "tdex-sdk";
 
 // Connect to specific provider and use Blockstream Esplora to source blockchain data.
 // Change the providerUrl with the one you want to trade with.
@@ -43,10 +142,8 @@ const trade = new Trade({
 });
 
 // Get a new address and his blinnding private key from identity interface
-const {
-  confidentialAddress,
-  blindingPrivateKey,
-} = trade.identity.getNextAddress();
+const { confidentialAddress, blindingPrivateKey } =
+  trade.identity.getNextAddress();
 
 // Receiving Address and Change address are the same with Identity.PrivateKey
 const changeAddrAndBlidning = trade.identity.getNextChangeAddress();
@@ -138,81 +235,6 @@ tradeWithMnemonic.identity.getNextAddress();
 tradeWithMnemonic.identity.getNextChangeAddress();
 ```
 
-### Identity
-
-#### Send a confidential transaction with Mnemonic (HD Wallet)
-
-```js
-import {
-  walletFromAddresses,
-  Wallet,
-  fetchUtxos,
-  Mnemonic,
-  IdentityType,
-} from "tdex-sdk";
-
-// Let's send to a confidential address a transaction on regtest
-
-const explorerUrl = "http://localhost:3001";
-
-// Create a Identity insatnce of type Mnemonic
-const identity = new Mnemonic({
-  chain: "regtest", // or regtest
-  type: IdentityType.Mnemonic,
-  value: {
-    mnemonic:
-      "deny pyramid explain dragon crane oxygen nature flee version cat fatal kingdom tray suspect broccoli ship rival hard add cruel defy library picture unaware",
-  },
-  initializeFromRestorer: true, // Scan the blockchain and restore previous addresses
-  restorer: new EsploraIdentityRestorer(explorerUrl),
-});
-
-// Wait for restore to be be completed. Can take a while.
-try {
-  await identity.isRestored();
-} catch (e) {
-  console.error(e);
-}
-
-// First we create a Wallet instance using the local cache of the identity abstraction
-const senderWallet = walletFromAddresses(identity.getAddresses(), "regtest");
-
-// then we fetch all utxos
-const arrayOfArrayOfUtxos = await Promise.all(
-  senderWallet.addresses.map((a) => fetchUtxos(a.confidentialAddress, explorerUrl))
-);
-// Flat them
-const utxos = arrayOfArrayOfUtxos.flat();
-
-// lets enrich them with confidential proofs using the prevout tx hexes
-const txHexes = await Promise.all(
-  utxos.map((utxo) => fetchTxHex(utxo.txid, explorerUrl))
-);
-const outputs = txHexes.map(
-  (hex, index) => Transaction.fromHex(hex).outs[utxos[index].vout]
-);
-utxos.forEach((utxo, index) => {
-  utxo.prevout = outputs[index];
-});
-
-console.log("Creating and blinding transaction...");
-const tx = senderWallet.createTx();
-const unsignedTx = senderWallet.buildTx(
-  tx, // empty transaction
-  utxos, // enriched unspents
-  "el1qqgptwnszsecmr2klpvmqrmdmczd0gakldxef39425wtztfn7g3rsvpc8me5t8k0wkeaqh0nsnjlxd3kejtqdsln37tjrh9gvr", // recipient confidential address
-  1000, // amount to be sent
-  "5ac9f65c0efcc4775e0baec4ec03abdde22473cd3cf33c0419ca290e0751b225", // nigiri regtest LBTC asset hash
-  identity.getNextChangeAddress() // change address we own
-);
-
-// Now we can sign with identity abstraction
-const signedTx = await identity.signPset(unsignedTx);
-
-// Finalize and extract tx to be a hex encoeded string ready for broadcast
-const txHex = Wallet.toHex(signedTx);
-```
-
 ### Swap
 
 Create manually Swap messages without connecting to a provider. This fully implements [**BOTD#3**](https://github.com/tdex-network/tdex-specs/blob/master/03-swap-protocol.md)
@@ -295,7 +317,9 @@ const tx = senderWallet.createTx();
 // fetch the utxos for each wallet's address
 const arrayOfArrayOfUtxos = await Promise.all(
   // fetchUtxos is an utility function using to retreive utxos of a given address (1st argument) from an Esplora endpoint (2nd argument)
-  senderWallet.addresses.map((a) => fetchUtxos(a.confidentialAddress, "https://nigiri.network/liquid/api"))
+  senderWallet.addresses.map((a) =>
+    fetchUtxos(a.confidentialAddress, "https://nigiri.network/liquid/api")
+  )
 );
 // Flat them
 const utxos = arrayOfArrayOfUtxos.flat();
