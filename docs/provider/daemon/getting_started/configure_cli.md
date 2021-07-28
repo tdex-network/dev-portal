@@ -47,7 +47,7 @@ $ tdex config set macaroons_path ~/.tdex-daemon/macaroons
 $ tdex config set tls_cert_path ~/.tdex-daemon/tls
 ```
 
-If instead, your dameon's Operator interface is not proteced by this type of authentication/authorization, then you need to run:
+If instead, your dameon's Operator interface is not proteced by this type of authentication/authorization (meaning you exported the env var TDEX_NO_MACAROONS=true at start-up), then you need to run:
 
 ```sh
 # To not use macaroons auth
