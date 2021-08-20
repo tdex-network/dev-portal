@@ -63,5 +63,5 @@ $ docker exec -it tdexd unlockerd
 ```
 
 
---- Backup option to S3 ---
+--- Backup option to S3 --- \
 If you provide bucket name, your data will be daily backed up on to it.
