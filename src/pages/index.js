@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
-import Translate  from '@docusaurus/Translate';
+import Translate from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.scss';
 import HomepageFeatures from '../components/HomepageFeatures';
@@ -30,7 +30,7 @@ function HomepageCallToAction() {
       <div className="container text--center">
         <h2 className="hero__title">How it works</h2>
         <p>
-          Anyone can become a <b>market makers</b> in the TDEX network, putting reserves in various asset pairs forming a <b>Market</b> and gaining swap fees. It exposes a public reachable endpoint for traders to get the current <b>market price</b> and to accept atomic swap requests.
+          Anyone can become a <b>market maker</b> in the TDEX network, putting reserves in various asset pairs forming a <b>Market</b> and gaining swap fees. It exposes a public reachable endpoint for traders to get the current <b>market price</b> and to accept atomic swap requests.
         </p>
         <h3 className="hero__title">Get started</h3>
         <div className={`row ${styles.btnContainer}`}>

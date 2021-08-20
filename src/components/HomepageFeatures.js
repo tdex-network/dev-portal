@@ -9,9 +9,9 @@ const FeatureList = [
         description: (
             <>
                 TDEX allows Liquid wallets to integrate atomic swap capabilities
-                against a liquidity providers and trading pools, all
-                transactions are signed client side. No need to hand out yur
-                private key.
+                against liquidity providers and trading pools, all
+                transactions are signed client side. No need to hand out your
+                private keys.
             </>
         ),
     },

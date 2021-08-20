@@ -25,13 +25,13 @@ $ tdex genseed
 Now that you have a seed, you can initialize the daemon's wallet:
 
 ```sh
-$ tdex init --seed <generatedSeed> --password <mypassword>
+$ tdex init --seed "<generatedSeed>" --password <mypassword>
 ```
 
 **OR**, instead, if you want to import and restore an existing wallet:
 
 ```sh
-$ tdex init --seed <mySeed> --password <mypassword> --restore
+$ tdex init --seed "<mySeed>" --password <mypassword> --restore
 ```
 
 Keep in mind that restoring a wallet can take a while, depeneding on the total number of accounts and addresses-per-account generated.
