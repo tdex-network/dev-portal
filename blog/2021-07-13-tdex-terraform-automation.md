@@ -27,14 +27,14 @@ cd dir-of-repo
 Back on the AWS side, find Ubuntu 18.04 public AMI, accessible in the region you are planing to deploy service and copy it's AMI ID. 
 
 To run deploy please prepare:
-  aws_access_key: KS2S2F4F2F2
-  aws_secret_key: M3C9S8D2...
-  aws_region: eu-west-1
-  aws_ami: ami-05f7491af5eef733a
-  ssh_public_key_path: ~/.ssh/id_rsa.pub
-  ssh_key_name: My Default Key
-  IP Addr: Your IP
-  Explorer URL: https://example.com/explorer
+  aws_access_key: KS2S2F4F2F2 \
+  aws_secret_key: M3C9S8D2... \
+  aws_region: eu-west-1 \
+  aws_ami: ami-05f7491af5eef733a \
+  ssh_public_key_path: ~/.ssh/id_rsa.pub \
+  ssh_key_name: My Default Key \
+  IP Addr: Your IP \ 
+  Explorer URL: https://example.com/explorer \
   S3 bucket name: my_backup_bucket
 
 Once you have everything in place, just execute deploy.sh with all the parameters in order provided above. 
