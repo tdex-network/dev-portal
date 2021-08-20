@@ -26,7 +26,7 @@ cd dir-of-repo
 
 Back on the AWS side, find Ubuntu 18.04 public AMI, accessible in the region you are planing to deploy service and copy it's AMI ID. 
 
-To run deploy please prepare:
+To run deploy please prepare: \
   aws_access_key: KS2S2F4F2F2 \
   aws_secret_key: M3C9S8D2... \
   aws_region: eu-west-1 \
@@ -39,8 +39,10 @@ To run deploy please prepare:
 
 Once you have everything in place, just execute deploy.sh with all the parameters in order provided above. 
 
-Example: ./deploy.sh aws_access_key aws_secret_key aws_region aws_ami ssh_public_key_path ssh_key_name IP_ADDR https://example.com/explorer aws_s3_my_backup_bucket
-
+Example: \
+```sh
+./deploy.sh aws_access_key aws_secret_key aws_region aws_ami ssh_public_key_path ssh_key_name IP_ADDR https://example.com/explorer aws_s3_my_backup_bucket
+```
 
 
 Additionally, you can use unlockerd auto-unlock service, which is shipped with the container. 
