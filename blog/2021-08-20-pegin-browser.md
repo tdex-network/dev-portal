@@ -57,7 +57,7 @@ let claimTx = await peginModule.claimTx(
 After 101 Bitcoin mainchain blocks, the user can **claim** his Liquid bitcoins creating a special Liquid transaction and broadcast it to the Liquid Network.
 
 
-### How an user can peg-in?
+### How a user can peg-in?
 
 At the moment the process is quite cumbersome and requires the user to use an Elements node via command line interface. This bascially forced majority of users to rely on centralized exchanges, involving a custodial process and counterparty risks.
 
