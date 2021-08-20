@@ -54,7 +54,7 @@ let claimTx = await peginModule.claimTx(
 
 [Liquid Network](https://liquid.net) allows anyone to "convert" BTC into L-BTC, the sidechain native asset, with a process called **peg-in**: it consists in sending Bitcoin to the Liquid federation multisignature script tweaked with the user's Liquid script. 
 
-After 101 Bitcoin mainchain blocks, the user can **claim** his Liquid bitcoins creating a special Liquid transaction and broadcast it to the Liquid Network.
+After 102 Bitcoin mainchain blocks, the user can **claim** his Liquid bitcoins creating a special Liquid transaction and broadcast it to the Liquid Network.
 
 
 ### How a user can peg-in?
