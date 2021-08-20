@@ -15,7 +15,7 @@ As a first step it is required toobtain aws access and secret keys. Best practic
 Copy your keys to safe place and do not share it with anyone.
 Check the documentation [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)
 
-Additionally install Terraform. 
+Next step is to install Terraform on your machine.
 The easiest way is to follow its documentation [here](https://www.terraform.io/docs/cli/install/apt.html)
 
 Clone the repository and enter its directory. 
@@ -39,7 +39,7 @@ To run deploy please prepare: \
 
 Once you have everything in place, just execute deploy.sh with all the parameters in order provided above. 
 
-Example: \
+Example:
 ```sh
 ./deploy.sh aws_access_key aws_secret_key aws_region aws_ami ssh_public_key_path ssh_key_name IP_ADDR https://example.com/explorer aws_s3_my_backup_bucket
 ```
