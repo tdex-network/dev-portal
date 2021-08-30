@@ -17,7 +17,11 @@ Proceed with opening AWS IAM users page, and click on Add user. Provide user wit
 Next, make sure that your AWS account(access key) has all required privileges to create EC2 instances and S3 access.
 Permissions you need (EC2 full, S3, VPC access)
 ![Attach permissions](../static/img/attach-perms.png)
+
+Once you add Permissions and Tags, click Create user. That will bring you to latest page provided with AWS Access and Secrey Keys. 
 Copy your keys to safe place and do not share it with anyone.
+![Attach permissions](../static/img/user-keys.png)
+
 Check the documentation [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)
 
 Next step is to install Terraform on your machine.
@@ -42,6 +46,7 @@ To run deploy please prepare: \
   Explorer URL: https://example.com/explorer \
   S3 bucket name: my_backup_bucket
 ![Deploy](../static/img/deploy.png)
+
 Once you have everything in place, just execute deploy.sh and it will prompt you for all the parameters in order provided above. 
 Please enter parameters carefully. 
 ```sh
