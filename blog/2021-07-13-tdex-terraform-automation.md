@@ -27,12 +27,19 @@ Check the documentation [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/
 - - - - - 
 Next step is to install Terraform on your machine.
 The easiest way is to follow its documentation [here](https://www.terraform.io/docs/cli/install/apt.html)
-
+Or install APT Packages for Debian and Ubuntu
+```sh
+$ curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+$ sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+$ sudo apt install terraform
+```
+- - - - - 
 Clone the TDex Box repository and enter its directory. 
 ```sh
 git clone https://github.com/tdex-network/tdex-box.git
 cd tdex-box
 ```
+- - - - - 
 
 Back on the AWS side, find Ubuntu 18.04 public AMI, accessible in the region you are planing to deploy service and copy it's AMI ID. 
 
@@ -40,12 +47,13 @@ To run deploy please prepare: \
   aws_access_key: KS2S2F4F2F2 \
   aws_secret_key: M3C9S8D2... \
   aws_region: eu-west-1 \
+    S3 bucket name: my_backup_bucket \
   aws_ami: ami-05f7491af5eef733a \
   ssh_public_key_path: ~/.ssh/id_rsa.pub \
   ssh_key_name: My Default Key \
   IP Addr: Your IP \ 
-  Explorer URL: https://example.com/explorer \
-  S3 bucket name: my_backup_bucket
+  Explorer URL: https://example.com/explorer 
+
 ![Deploy](../static/img/deploy.png)
 
 Once you have everything in place, just execute deploy.sh and it will prompt you for all the parameters in order provided above. 
@@ -55,5 +63,5 @@ $ chmod +x deploy.sh
 $ ./deploy.sh
 ```
 
-We advice you to always have backup enabled, therefore we added S3 backup option. 
+It is good practice to have backup enabled, so please provide S3 bucket name when deploying. 
 
