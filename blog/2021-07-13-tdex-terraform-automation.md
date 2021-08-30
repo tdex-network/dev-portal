@@ -18,12 +18,13 @@ Next, make sure that your AWS account(access key) has all required privileges to
 Permissions you need (EC2 full, S3, VPC access)
 ![Attach permissions](../static/img/attach-perms.png)
 
-Once you add Permissions and Tags, click Create user. That will bring you to latest page provided with AWS Access and Secrey Keys. 
+Once you add Permissions and Tags, click Create user. That will bring you to latest page provided with AWS Access and Secret Keys. 
 Copy your keys to safe place and do not share it with anyone.
 ![Attach permissions](../static/img/user-keys.png)
 
 Check the documentation [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)
 
+- - - - - 
 Next step is to install Terraform on your machine.
 The easiest way is to follow its documentation [here](https://www.terraform.io/docs/cli/install/apt.html)
 
@@ -54,5 +55,5 @@ $ chmod +x deploy.sh
 $ ./deploy.sh
 ```
 
-We advice you to always have backup enabled, therefor we added S3 backup option. 
+We advice you to always have backup enabled, therefore we added S3 backup option. 
 
