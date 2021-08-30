@@ -1,9 +1,9 @@
 ---
-slug: tdex-terraform-automation
-title: Automate TDex deamon with terraform
+slug: tdex-terraform-deploy
+title: Deploy a TDEX Daemon to AWS with Terraform
 author: Alexander K
-author_title: Maintainer of TDEX Network
-tags: [terraform, automation, tdex]
+author_title: TDEX Contributor
+tags: [terraform, automation, tdex, deploy]
 ---
 
 Configure and run TDex box easily using Terraform automation. 
@@ -11,10 +11,11 @@ Configure and run TDex box easily using Terraform automation.
 <!--truncate-->
 
 
-As a first step it is required toobtain aws access and secret keys. Best practice is to create new user in AWS IAM. 
+As a first step it is required to obtain aws access and secret keys. Best practice is to create new user in AWS IAM. 
 Please navigate to Services > IAM page. 
 Proceed with opening AWS IAM users page, and click on Add user. Provide user with name, and below, for the Access type select Programmatic access. ![Add User](../static/img/add-user.png)
 Next, make sure that your AWS account(access key) has all required privileges to create EC2 instances and S3 access.
+Permissions you need (EC2 full, S3, VPC access)
 ![Attach permissions](../static/img/attach-perms.png)
 Copy your keys to safe place and do not share it with anyone.
 Check the documentation [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)
@@ -40,7 +41,7 @@ To run deploy please prepare: \
   IP Addr: Your IP \ 
   Explorer URL: https://example.com/explorer \
   S3 bucket name: my_backup_bucket
-
+![Deploy](../static/img/attach-perms.png)
 Once you have everything in place, just execute deploy.sh and it will prompt you for all the parameters in order provided above. 
 Please enter parameters carefully. 
 ```sh
