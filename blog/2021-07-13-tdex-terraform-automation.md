@@ -41,7 +41,7 @@ To run deploy please prepare: \
   IP Addr: Your IP \ 
   Explorer URL: https://example.com/explorer \
   S3 bucket name: my_backup_bucket
-![Deploy](../static/img/attach-perms.png)
+![Deploy](../static/img/deploy.png)
 Once you have everything in place, just execute deploy.sh and it will prompt you for all the parameters in order provided above. 
 Please enter parameters carefully. 
 ```sh
