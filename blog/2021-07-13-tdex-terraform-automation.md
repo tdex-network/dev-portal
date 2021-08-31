@@ -43,7 +43,7 @@ cd tdex-box
 ```
 - - - - - 
 
-Back on the AWS side, find Ubuntu 18.04 public AMI, accessible in the region you are planing to deploy service and copy it's AMI ID. 
+On the AWS AMI Marketplace, find Ubuntu 18.04 public AMI, accessible in the region you are planing to deploy service and copy it's AMI ID. 
 
 To run deploy please prepare: \
   aws_access_key: KS2S2F4F2F2 \
@@ -56,14 +56,14 @@ To run deploy please prepare: \
   IP Addr: Your IP \ 
   Explorer URL: https://example.com/explorer 
 
-![Deploy](../static/img/deploy.png)
-
 Once you have everything in place, just execute deploy.sh and it will prompt you for all the parameters in order provided above. 
 Please enter parameters carefully. 
 ```sh
 $ chmod +x deploy.sh
 $ ./deploy.sh
 ```
+![Deploy](../static/img/deploy.png)
+
 
 Since it is good practice to have backup enabled, please provide S3 bucket name when deploying. 
 
