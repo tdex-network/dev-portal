@@ -46,7 +46,7 @@ cd tdex-box
 On the AWS AMI Marketplace, find Ubuntu 20.04 public AMI, accessible in the region you are planing to deploy service and copy it's AMI ID. 
 
 To run deploy please prepare: \
-
+|Parameter name|Value|
 |---|---|
 |aws_access_key|KS2S2F4F2F2|
 |aws_secret_key|M3C9S8D2...|
