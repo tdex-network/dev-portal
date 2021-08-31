@@ -11,7 +11,8 @@ Configure and run TDex box easily using Terraform automation.
 <!--truncate-->
 
 ### Create user and obtain AWS Keys
-As a first step it is required to obtain aws access and secret keys. Best practice is to create new user in AWS IAM. 
+
+As a first step it is required to obtain AWS access and secret keys. Best practice is to create new user in AWS IAM. 
 Please navigate to Services > IAM page. 
 Proceed with opening AWS IAM users page, and click on Add user. Provide user with name, and below, for the Access type select Programmatic access. ![Add User](../static/img/add-user.png)
 Next, make sure that your AWS account(access key) has all required privileges to create EC2 instances and S3 access.
