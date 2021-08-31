@@ -7,10 +7,9 @@ author_image_url: https://avatars.githubusercontent.com/u/3596602
 tags: [pegin, liquid, tdex, bitcoin]
 ---
 
-
-### TL;DR
-
 Any wallet developer can integrate trustless Liquid Bitcoin peg-in features in their own application, even in the browser!
+
+<!--truncate-->
 
 ```sh
 npm install --save pegin
