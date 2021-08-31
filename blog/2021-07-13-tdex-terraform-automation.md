@@ -10,7 +10,7 @@ Configure and run TDex box easily using Terraform automation.
 
 <!--truncate-->
 
-
+### Create user and obtain AWS Keys
 As a first step it is required to obtain aws access and secret keys. Best practice is to create new user in AWS IAM. 
 Please navigate to Services > IAM page. 
 Proceed with opening AWS IAM users page, and click on Add user. Provide user with name, and below, for the Access type select Programmatic access. ![Add User](../static/img/add-user.png)
@@ -25,6 +25,7 @@ Copy your keys to safe place and do not share it with anyone.
 Check the documentation [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)
 
 - - - - - 
+### Install Terraform
 Next step is to install Terraform on your machine.
 The easiest way is to follow its documentation [here](https://www.terraform.io/docs/cli/install/apt.html) \
 Or follow this installation for APT Packages for Debian and Ubuntu
@@ -34,6 +35,7 @@ $ sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.r
 $ sudo apt install terraform
 ```
 - - - - - 
+### Proceed with cloning and deploy
 Clone the TDex Box repository and enter its directory. 
 ```sh
 git clone https://github.com/tdex-network/tdex-box.git
@@ -63,5 +65,5 @@ $ chmod +x deploy.sh
 $ ./deploy.sh
 ```
 
-It is good practice to have backup enabled, so please provide S3 bucket name when deploying. 
+Since it is good practice to have backup enabled, please provide S3 bucket name when deploying. 
 
