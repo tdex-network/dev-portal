@@ -45,15 +45,15 @@ cd tdex-box
 
 On the AWS AMI Marketplace, find Ubuntu 20.04 public AMI, accessible in the region you are planing to deploy service and copy it's AMI ID. 
 
-To run deploy please prepare: \
+To run deploy please prepare:
 |Parameter name|Value|
 |---|---|
-|aws_access_key|KS2S2F4F2F2|
-|aws_secret_key|M3C9S8D2...|
+|AWS Access Key|KS2S2F4F2F2|
+|AWS Secret Key|M3C9S8D2...|
 |S3 Bucket name|MyBucketName|
-|aws_ami|ami-05f7491af5eef733a|
-|ssh_public_key_path|Public key location|
-|ssh_key_name|Default key location|
+|AWS AMI ID|ami-05f7491af5eef733a|
+|SSH Public key path|Public key location|
+|SSH Private key|Default key location|
 |IP Address|your ip|
 |Explorer URL|https://example.com/explorer|
 
@@ -61,6 +61,7 @@ To run deploy please prepare: \
 Once you have everything in place, just execute deploy.sh and it will prompt you for all the parameters in order provided above. 
 Please enter parameters carefully. 
 ```sh
+$ cd terabox/
 $ chmod +x deploy.sh
 $ ./deploy.sh
 ```
