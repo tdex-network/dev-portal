@@ -16,7 +16,7 @@ As a first step it is required to obtain AWS access and secret keys. Best practi
 Please navigate to Services > IAM page > Add user. 
 Proceed with opening AWS IAM users page, and click on Add user. Provide user with name, and below, for the Access type select Programmatic access. ![Add User](../static/img/add-user.png)
 Next, make sure that your AWS account(access key) has all required privileges to create EC2 instances and S3 access.
-Permissions you need (EC2 full, S3, VPC access)
+Permissions you need (EC2 full, S3 full, VPC access)
 ![Attach permissions](../static/img/attach-perms.png)
 
 Once you add Permissions and Tags, click Create user. That will bring you to latest page provided with AWS Access and Secret Keys. 
