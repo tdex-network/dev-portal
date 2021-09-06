@@ -60,3 +60,26 @@ $ ./deploy.sh
 
 Since it is good practice to have backup enabled, please provide S3 bucket name when deploying. 
 
+### Use TDexd CLI to interact with deployed service
+
+TDEX is a CLI (GRPC client), that can be used to interact with TDEX-deamon service deployed to machine. 
+Thats why we need to init/config tdex-cli, which is way of authenticating to deamon. 
+When configuring service, we need to provide several things:
+ - tls_cert_path
+ - macaroons_path
+ - rpcserver (this will be IP of machine where tdex-box is deployed)
+
+To install Tdex cli you need to clone tdex-deamon repository and build cli. 
+
+```sh
+$ git clone https://github.com/tdex-network/tdex-daemon
+$ cd tdex-deamon
+$ make build-cli
+$ mv build/tdex-linux-platform /usr/bin/tdex
+$ /usr/bin/tdex config set tls_cert_path /path/to/downloaded/cert.pem
+$ /usr/bin/tdex config set macaroons_path /path/to/downloaded/admin.macaroon
+$ /usr/bin/tdex config set rpcserver 43.34.43.34 (IP of your deployed machine)
+
+After those are set, you can proceed to interact with tdex-deamon. 
+$ /usr/bin/tdex help   <-- for more information and commands
+```
