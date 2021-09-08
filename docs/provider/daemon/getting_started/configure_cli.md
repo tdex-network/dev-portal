@@ -1,6 +1,6 @@
 ---
 title: 'Configure CLI'
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 Now that your daemon is up and running, you may need to configure the `tdex` CLI to communicate with the Operator interface depending on its version.
