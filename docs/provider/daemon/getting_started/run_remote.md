@@ -8,7 +8,9 @@ Whether you're serving your daemon as a standalone binary or as a dockerized sol
 Here below, you can find the necessary info and examples to:
 
 - [Enable macaroons/TLS for Operator interface on remote host](#enable-macaroonstls-for-operator-interface-on-remote-host)
-- [Enable TLS for Trade interface on remote host](#enable-tls-for-trade-interface-on-remote-host)
+- [Enable TLS or Onion for Trade interface on remote host](#enable-tls-or-onion-for-trade-interface-on-remote-host)
+  - [Enable TLS for Trade interface](#enable-tls-for-trade-interface)
+  - [Enable Onion for Trade interface](#enable-onion-for-trade-interface)
 - [Enable secure connection on both interfaces](#enable-secure-connection-on-both-interfaces)
 - [Configure a local Operator CLI to connect with remote daemon](#configure-a-local-operator-cli-to-connect-with-remote-daemon)
 
@@ -44,7 +46,11 @@ Before starting the daemon, export the environment variables `TDEX_OPERATOR_EXTR
 
 This will make the daemon create the TLS certificate by including the given IP/DNS name to the list of identities, making it usable for external clients.
 
-## Enable TLS for Trade interface on remote host
+## Enable TLS or Onion for Trade interface on remote host
+
+To secure the connection with the Trade interface of your daemon, depending on your needs, you can opt for TLS encryption or spinnig up a Onion hidden service.
+
+### Enable TLS for Trade interface
 
 It is possible to enable TLS encryption and requiring to establish a secure connection with the public Trade interface of the daemon.
 
@@ -77,8 +83,9 @@ For this, you must obtain a valid TLS certificate from a trusted Certificate Aut
     ghcr.io/tdex-network/tdexd:latest
     ```
 
-:::tip
-If your daemon remote host uses a linux system, instead of enabling TLS on the Trade interface, you can alternatively run a tor hidden service as a proxy in front of it.
+### Enable Onion for Trade interface
+
+If your daemon remote host uses a linux system, instead of enabling TLS on the Trade interface, you can alternatively run a Tor hidden service acting as a proxy in front of it.
 
 If you opted for a dockerized solution, doing so if as simple as starting a container:
 
@@ -98,7 +105,7 @@ $ docker -d \
     -e TDEX_TOR_SERVICE_KEY=${ONION_KEY} \
     goldy/tor-hidden-service:latest
 ```
-
+:::tip
 To easily orchestrate multiple containers inter-connected to each other, you might find **[TDex Box](https://github.com/tdex-network/tdex-box)** as an interesting solution for this purpose. Rather than having to run each container manually, it simplifies the process to editing a YAML configuration file and running a single command to spin up multiple containers (it is essentially a [docker-compose](https://docs.docker.com/compose/) file).
 :::
 
