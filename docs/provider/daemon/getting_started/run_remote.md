@@ -9,6 +9,7 @@ Here below, you can find the necessary info and examples to:
 
 - [Enable macaroons/TLS for Operator interface on remote host](#enable-macaroonstls-for-operator-interface-on-remote-host)
 - [Enable TLS for Trade interface on remote host](#enable-tls-for-trade-interface-on-remote-host)
+- [Enable secure connection on both interfaces](#enable-secure-connection-on-both-interfaces)
 - [Configure a local Operator CLI to connect with remote daemon](#configure-a-local-operator-cli-to-connect-with-remote-daemon)
 
 ## Enable macaroons/TLS for Operator interface on remote host
@@ -76,8 +77,7 @@ For this, you must obtain a valid TLS certificate from a trusted Certificate Aut
     ghcr.io/tdex-network/tdexd:latest
     ```
 
-:::tip
-Enable secure connection on both interfaces
+## Enable secure connection on both interfaces
 
 - Standalone:
     ```sh
@@ -107,7 +107,6 @@ Enable secure connection on both interfaces
     -e TDEX_SSL_CERT=/fullchain.pem \
     ghcr.io/tdex-network/tdexd:latest
     ```
-:::
 
 ## Configure a local Operator CLI to connect with remote daemon
 
@@ -129,3 +128,5 @@ $ tdex config init --macaroons_path ./admin.macaroon --tls_cert_path ./cert.pem 
 $ tdex genseed
 $ tdex init --password "***" --seed "***"
 ```
+
+That's it! You're now ready to [deposit funds](../deposit_funds.md) and open some markets.
