@@ -25,7 +25,7 @@ Before starting the daemon, export the environment variables `TDEX_OPERATOR_EXTR
 - Standalone:
     ```sh
     $ export TDEX_OPERATOR_EXTRA_IP=54.170.20.39
-    $ export TDEX_OPERATOR_EXTRA_DOMAIN=provider.mydomain.com
+    $ export TDEX_OPERATOR_EXTRA_DOMAIN=provider.mydomain.network
 
     # Start a daemon with macaroons/TLS enabled ONLY on Operator interface
     tdexd
@@ -40,7 +40,7 @@ Before starting the daemon, export the environment variables `TDEX_OPERATOR_EXTR
     -p 9945:9945 -p 9000:9000 \
     -v `pwd`/tdexd:/.tdex-daemon \
     -e TDEX_OPERATOR_EXTRA_IP=54.170.20.39 \
-    -e TDEX_OPERATOR_EXTRA_DOMAIN=provider.mydomain.com \
+    -e TDEX_OPERATOR_EXTRA_DOMAIN=provider.mydomain.network \
     ghcr.io/tdex-network/tdexd:latest
   ```
 
@@ -113,8 +113,8 @@ To easily orchestrate multiple containers inter-connected to each other, you mig
 
 - Standalone:
     ```sh
-    $ export TDEX_OPERATOR_EXTRA_IP=54.170.20.39
-    $ export TDEX_OPERATOR_EXTRA_DOMAIN=provider.mydomain.com
+    $ export TDEX_OPERATOR_EXTRA_IP=1.2.3.4
+    $ export TDEX_OPERATOR_EXTRA_DOMAIN=provider.mydomain.network
     $ export TDEX_SSL_KEY=~/.tdex-daemon/trade-tls/privatekey.pem
     $ export TDEX_SSL_CERT=~/.tdex-daemon/trade-tls/fullchain.pem
 
@@ -133,8 +133,8 @@ To easily orchestrate multiple containers inter-connected to each other, you mig
     -v `pwd`/tdexd:/.tdex-daemon \
     -v `pwd`/privatekey.pem:/privatekey.pem \
     -v `pwd`/fullchain.pem:/fullchain.pem \
-    -e TDEX_OPERATOR_EXTRA_IP=54.170.20.39 \
-    -e TDEX_OPERATOR_EXTRA_DOMAIN=provider.mydomain.com \
+    -e TDEX_OPERATOR_EXTRA_IP=1.2.3.4 \
+    -e TDEX_OPERATOR_EXTRA_DOMAIN=provider.mydomain.network \
     -e TDEX_SSL_KEY=/privatekey.pem \
     -e TDEX_SSL_CERT=/fullchain.pem \
     ghcr.io/tdex-network/tdexd:latest
@@ -147,14 +147,14 @@ Now that your daemon is up and running on your remote machine, if you made your 
 To do this, you need to import in your local machine a copy of both the macaroon named `admin.macaroon` and the TLS certificate named `cert.pem` that you can find in the daemon's datadir. If, for example you have SSH access to the remote host you can take advantage of the `scp` command:
 
 ```sh
-$ scp ubuntu@54.170.20.39:~/.tdex-daemon/macaroons/admin.macaroon ~/.tdex-daemon-remote/admin.macaroon
-$ scp ubuntu@54.170.20.39:~/.tdex-daemon/tls/cert.pem ~/.tdex-daemon-remote/cert.pem
+$ scp ubuntu@provider.mydomain.network:~/.tdex-daemon/macaroons/admin.macaroon ~/.tdex-daemon-remote/admin.macaroon
+$ scp ubuntu@provider.mydomain.network:~/.tdex-daemon/tls/cert.pem ~/.tdex-daemon-remote/cert.pem
 ```
 
 Now it's time to configure the local Operator CLI to connect to the remote daemon:
 
 ```sh
-$ tdex config init --macaroons_path ./admin.macaroon --tls_cert_path ./cert.pem --rpc_address provider.mydomain.com:9000
+$ tdex config init --macaroons_path ./admin.macaroon --tls_cert_path ./cert.pem --rpc_address provider.mydomain.network:9000
 
 # Now it's possible to start initializing the daemon if it's a brand new one..
 $ tdex genseed
