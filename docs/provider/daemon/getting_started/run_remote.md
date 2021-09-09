@@ -77,6 +77,31 @@ For this, you must obtain a valid TLS certificate from a trusted Certificate Aut
     ghcr.io/tdex-network/tdexd:latest
     ```
 
+:::tip
+If your daemon remote host uses a linux system, instead of enabling TLS on the Trade interface, you can alternatively run a tor hidden service as a proxy in front of it.
+
+If you opted for a dockerized solution, doing so if as simple as starting a container:
+
+```sh
+# If you already have an onion key you can use it by exporting env var,
+# otherwise just skip this step.
+$ export ONION_KEY=<your_oniion_key>
+
+# Start a tor hidden service that proxies incoming traffic on HTTP port to
+# daemon Trade interface on port 9945.
+$ docker -d \
+    run --name tor \
+    --network <network_with_tdexd_running>
+    --restart unless_stopped \
+    -e TDEX_TOR_SERVICE_HOSTS="80:tdexd:9945" \
+    -e TDEX_TOR_SERVICE_VERSION="3" \
+    -e TDEX_TOR_SERVICE_KEY=${ONION_KEY} \
+    goldy/tor-hidden-service:latest
+```
+
+To easily orchestrate multiple containers inter-connected to each other, you might find **[TDex Box](https://github.com/tdex-network/tdex-box)** as an interesting solution for this purpose. Rather than having to run each container manually, it simplifies the process to editing a YAML configuration file and running a single command to spin up multiple containers (it is essentially a [docker-compose](https://docs.docker.com/compose/) file).
+:::
+
 ## Enable secure connection on both interfaces
 
 - Standalone:
