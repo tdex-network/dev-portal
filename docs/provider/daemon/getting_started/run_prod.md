@@ -11,7 +11,6 @@ Here below, you can find the necessary info and examples to:
 - [Enable TLS or Onion for Trade interface on remote host](#enable-tls-or-onion-for-trade-interface-on-remote-host)
   - [Enable TLS for Trade interface](#enable-tls-for-trade-interface)
   - [Enable Onion for Trade interface](#enable-onion-for-trade-interface)
-- [Enable secure connection on both interfaces](#enable-secure-connection-on-both-interfaces)
 - [Configure a local Operator CLI to connect with remote daemon](#configure-a-local-operator-cli-to-connect-with-remote-daemon)
 
 ## Enable macaroons/TLS for Operator interface on remote host
@@ -92,7 +91,7 @@ If you opted for a dockerized solution, doing so if as simple as starting a cont
 ```sh
 # If you already have an onion key you can use it by exporting env var,
 # otherwise just skip this step.
-$ export ONION_KEY=<your_oniion_key>
+$ export ONION_KEY=<your_oniion_key_as_base64>
 
 # Start a tor hidden service that proxies incoming traffic on HTTP port to
 # daemon Trade interface on port 9945.
@@ -106,39 +105,8 @@ $ docker -d \
     goldy/tor-hidden-service:latest
 ```
 :::tip
-To easily orchestrate multiple containers inter-connected to each other, you might find **[TDex Box](https://github.com/tdex-network/tdex-box)** as an interesting solution for this purpose. Rather than having to run each container manually, it simplifies the process to editing a YAML configuration file and running a single command to spin up multiple containers (it is essentially a [docker-compose](https://docs.docker.com/compose/) file).
+To easily orchestrate multiple containers inter-connected to each other, you might find **[TDEX Box](https://github.com/tdex-network/tdex-box)** as an interesting solution for this purpose. Rather than having to run each container manually, it simplifies the process to editing a YAML configuration file and running a single command to spin up multiple containers (it is essentially a [docker-compose](https://docs.docker.com/compose/) file).
 :::
-
-## Enable secure connection on both interfaces
-
-- Standalone:
-    ```sh
-    $ export TDEX_OPERATOR_EXTRA_IP=1.2.3.4
-    $ export TDEX_OPERATOR_EXTRA_DOMAIN=provider.mydomain.network
-    $ export TDEX_SSL_KEY=~/.tdex-daemon/trade-tls/privatekey.pem
-    $ export TDEX_SSL_CERT=~/.tdex-daemon/trade-tls/fullchain.pem
-
-    # Start a daemon with macaroons/TLS over Operator interface AND TLS enabled 
-    # over Trade interface
-    $ tdexd
-    ```
-- Docker:
-    ```sh
-    # Start a dockerized daemon with macaroons/TLS enabled over Operator
-    # interface AND TLS enabled over Trade interface
-    $ docker run -it -d \
-    --name tdexd \
-    --restart unless-stopped \
-    -p 9945:9945 -p 9000:9000 \
-    -v `pwd`/tdexd:/.tdex-daemon \
-    -v `pwd`/privatekey.pem:/privatekey.pem \
-    -v `pwd`/fullchain.pem:/fullchain.pem \
-    -e TDEX_OPERATOR_EXTRA_IP=1.2.3.4 \
-    -e TDEX_OPERATOR_EXTRA_DOMAIN=provider.mydomain.network \
-    -e TDEX_SSL_KEY=/privatekey.pem \
-    -e TDEX_SSL_CERT=/fullchain.pem \
-    ghcr.io/tdex-network/tdexd:latest
-    ```
 
 ## Configure a local Operator CLI to connect with remote daemon
 
