@@ -44,7 +44,7 @@ $ tdex unlock --password <mypassword>
 
 ## Deposit funds
 
-Finally, you are ready to deposit funds: you can either [manually deposit funds](#manual-deposit) to the daemon, or you can make use of the [fragmenter tool] that facilitates the process, empowering the daemon to serve an higher number of concurrent swap requests. 
+Finally, you are ready to deposit funds: you can either [manually deposit funds](#manual-deposit) to the daemon, or you can make use of the [fragmenter tool](#fragmenter-tool) that facilitates the process, empowering the daemon to serve an higher number of concurrent swap requests. 
 
 ### Manual deposit
 

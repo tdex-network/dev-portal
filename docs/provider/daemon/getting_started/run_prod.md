@@ -1,5 +1,5 @@
 ---
-title: 'Run in production'
+title: 'Run in Production'
 sidebar_position: 4
 ---
 
@@ -119,14 +119,10 @@ $ scp ubuntu@provider.mydomain.network:~/.tdex-daemon/macaroons/admin.macaroon ~
 $ scp ubuntu@provider.mydomain.network:~/.tdex-daemon/tls/cert.pem ~/.tdex-daemon-remote/cert.pem
 ```
 
-Now it's time to configure the local Operator CLI to connect to the remote daemon:
+Now you're ready to properly configure the local Operator CLI to connect to the remote daemon:
 
 ```sh
 $ tdex config init --macaroons_path ./admin.macaroon --tls_cert_path ./cert.pem --rpc_address provider.mydomain.network:9000
-
-# Now it's possible to start initializing the daemon if it's a brand new one..
-$ tdex genseed
-$ tdex init --password "***" --seed "***"
 ```
 
-That's it! You're now ready to [deposit funds](../deposit_funds.md) and open some markets.
+That's it! About time for you to [initialize your daemon with a seed and password](../deposit_funds.md#initialize-and-unlock-the-wallet) and [deposit funds](../deposit_funds.md#deposit-funds) and open some markets.
