@@ -75,10 +75,10 @@ Once you have your Onion public key, please follow [this](https://dev.tdex.netwo
 
 
 
-### Use TDexd CLI to interact with deployed service
+### Use TDEX CLI to interact with tdexd endpoint
 
 TDEX is a CLI (GRPC client), that can be used to interact with remote TDEX-deamon endpoint. 
-Thats why we need to init/config tdex-cli, which is way of authenticating to deamon. 
+We need to init/configure tdex-cli, which is way of authenticating to deamon. 
 When configuring service, we need to provide several things:
  - tls_cert_path
  - macaroons_path
@@ -92,7 +92,8 @@ $ cd tdex-deamon
 $ make build-cli
 $ ln -s build/tdex-linux-platform /usr/bin/tdex
 ```
-Once you have installed Tdex CLI, you would need to download TLS and Macaroons from your tdexd host machine in order to connect remotely. This command will download whole gated/ folder which is copy of your container deamon. 
+
+Once you have installed TDEX CLI, you would need to download TLS and Macaroons from your tdexd host machine in order to connect remotely. This command will download whole gated/ folder which is copy of your container deamon. 
 ```sh
 $  scp -r ubuntu@your.tdex.host.ip:/path/to/tdexd/ /path/to/local/destination
 ```
