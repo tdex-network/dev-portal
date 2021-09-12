@@ -98,8 +98,8 @@ Once you have installed TDEX CLI, you would need to download TLS and Macaroons f
 $  scp -r ubuntu@your.tdex.host.ip:/path/to/tdexd/ /path/to/local/destination
 ```
 
-Proceed with configuring tdex-cli with downloaded macaroons and cert, and add your remote endpoint IP. 
-cert.pem will be located at gated/tls/cert.pem
+Proceed with configuring tdex-cli with downloaded macaroons and cert, and add your remote endpoint IP. \
+cert.pem will be located at gated/tls/cert.pem \
 admin.macaroon will be located at gated/macaroons/admin.macaroon
 ```sh
 $ /usr/bin/tdex config set tls_cert_path /path/to/downloaded/cert.pem
