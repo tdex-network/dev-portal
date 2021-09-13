@@ -116,6 +116,6 @@ After those are set, you can test tdex-deamon
 $ tdex listmarket
 $ tdex help   <-- for more information and commands
 ```
-For more information please check [this link](https://dev.tdex.network/docs/provider/daemon/getting_started/configure_cli)
+For more information [how to configure and use the TDEX CLI](https://dev.tdex.network/docs/provider/daemon/getting_started/configure_cli)
 ### Deposit funds
 **Done!** Now you are ready to [deposit funds](https://dev.tdex.network/docs/provider/daemon/deposit_funds) to open a market and earn swap fees.
