@@ -99,7 +99,7 @@ $  scp -r user@your.tdex.host.ip:/path/to/tdexd/ .
 ```
 
 Proceed with configuring tdex-cli with downloaded macaroons and cert, and add your remote endpoint IP. 
- - cert.pem will be located at gated/tls/cert.pem 
+ - cert.pem is located at $HOME/tdex-box/gated/tls/cert.pem on the remote machine
  - admin.macaroon will be located at gated/macaroons/admin.macaroon
 ```sh
 # By default it looks for the daemon operator gRPC interface on localhost:9000
