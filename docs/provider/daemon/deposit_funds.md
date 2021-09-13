@@ -7,7 +7,7 @@ To create a market, you need to deposit two reserves of two **Liquid assets** fo
 
 To determine the spot price you can adopt different strategies, at the moment the supported one are **PLUGGABLE** and **BALANCED**.
 
-The PLUGGABLE strategy expects you to update the price manually, plugging in an external price feed that need to call the `UpdateMarketPrice` rpc method of the operator interface.
+The PLUGGABLE strategy expects you to update the price manually, plugging in an external price feed that need to call the `UpdateMarketPrice` rpc method of the operator interface. If you're searching for an automatized way to do this operation, take a look at the [TDEX Feeder service](../feeder/overview.md).
 
 The BALANCED strategy (this is the default when you create a market) uses **Automated Market Making** to determine the spot price. The initial ratio of the two amounts you deposit will represent the price of the first trade you accept in.
 From that point on, the **automated market making strategy will self regulate the trading price**. It follows the *constant product market-making* formula. Every transaction that occurs on this market will adjust the prices of the market accordingly. It's a basic supply and demand automated market making system.
@@ -44,7 +44,7 @@ $ tdex unlock --password <mypassword>
 
 ## Deposit funds
 
-Finally, you are ready to deposit funds: you can either [manually deposit funds](#manual-deposit) to the daemon, or you can make use of the [fragmenter tool] that facilitates the process, empowering the daemon to serve an higher number of concurrent swap requests. 
+Finally, you are ready to deposit funds: you can either [manually deposit funds](#manual-deposit) to the daemon, or you can make use of the [fragmenter tool](#fragmenter-tool) that facilitates the process, empowering the daemon to serve an higher number of concurrent swap requests. 
 
 ### Manual deposit
 
@@ -172,6 +172,10 @@ This updates the current market percentage fee to 1% (by default it's 0.25%).
 ```sh
 $ tdex fixedfee --base_fee 600 --quote_fee 20000
 ```
+
+:::tip
+Consider to set a fixed fee of ~650 sats of LBTC and correspond amount of quote asset on the markets of your daemon since you'll always pay for network fees for the all the swap transactions made by traders.
+:::
 
 This updates the current market fixed fees (by default they're 0).
 

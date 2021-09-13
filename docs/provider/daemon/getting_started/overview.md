@@ -3,7 +3,7 @@ title: 'Overview'
 sidebar_position: 1
 ---
 
-A TDEX daemon can be served in one of the following ways:
+The daemon can be served in one of the following ways:
  * [Docker container](run_docker.md)
  * [Standalone application](run_standalone.md)
 
