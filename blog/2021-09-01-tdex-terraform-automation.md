@@ -107,7 +107,7 @@ $ tdex config init
 # If the daemon is running on regtest
 $ tdex config init --network=regtest --explorer_url=http://localhost:3001 
 # or on a remote machine
-$ tdex config init --rpcserver=example.com:9000 --tls_cert_path=/location/cert.pem --macaroons_path=/location/admin.macaroon
+$ tdex config init --rpcserver=example.com:9000 --tls_cert_path=./cert.pem --macaroons_path=./admin.macaroon
 ##### OR you can use config to set your values
 $ tdex config list
 $ tdex config set tls_cert_path /path/to/downloaded/cert.pem
