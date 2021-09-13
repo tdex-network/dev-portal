@@ -103,9 +103,6 @@ Proceed with configuring tdex-cli with downloaded macaroons and cert, and add yo
  - admin.macaroon will be located at gated/macaroons/admin.macaroon
 ```sh
 # By default it looks for the daemon operator gRPC interface on localhost:9000
-$ tdex config init
-# If the daemon is running on regtest
-$ tdex config init --network=regtest --explorer_url=http://localhost:3001 
 # or on a remote machine
 $ tdex config init --rpcserver=example.com:9000 --tls_cert_path=./cert.pem --macaroons_path=./admin.macaroon
 ##### OR you can use config to set your values
