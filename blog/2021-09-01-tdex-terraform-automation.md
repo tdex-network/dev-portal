@@ -29,7 +29,7 @@ Check the documentation [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/
 ### Install Terraform
 
 Next step is to install Terraform on your machine.
-The easiest way is to follow its documentation [here](https://www.terraform.io/docs/cli/install/apt.html) \
+The easiest way is to follow its documentation [here](https://www.terraform.io/docs/cli/install/apt.html) 
 Or follow this installation for APT Packages for Debian and Ubuntu.
 ```sh
 $ curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
