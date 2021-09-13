@@ -107,7 +107,7 @@ Proceed with configuring tdex-cli with downloaded macaroons and cert, and add yo
 $ tdex config init --rpcserver=example.com:9000 --tls_cert_path=./cert.pem --macaroons_path=./admin.macaroon
 ##### OR you can use config to set your values
 $ tdex config
-$ tdex config set tls_cert_path /path/to/downloaded/cert.pem
+$ tdex config set tls_cert_path ./cert.pem
 $ tdex config set macaroons_path ./admin.macaroon
 $ tdex config set rpcserver tdex.remote.host.ip 
 
