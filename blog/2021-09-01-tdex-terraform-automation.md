@@ -102,14 +102,23 @@ Proceed with configuring tdex-cli with downloaded macaroons and cert, and add yo
  - cert.pem will be located at gated/tls/cert.pem 
  - admin.macaroon will be located at gated/macaroons/admin.macaroon
 ```sh
-$ /usr/bin/tdex config set tls_cert_path /path/to/downloaded/cert.pem
-$ /usr/bin/tdex config set macaroons_path /path/to/downloaded/admin.macaroon
-$ /usr/bin/tdex config set rpcserver tdex.remote.host.ip (IP of your deployed machine)
+# By default it looks for the daemon operator gRPC interface on localhost:9000
+$ tdex config init
+# If the daemon is running on regtest
+$ tdex config init --network=regtest --explorer_url=http://localhost:3001 
+# or on a remote machine
+$ tdex config init --rpcserver=example.com:9000 --tls_cert_path=/location/cert.pem --macaroons_path=/location/admin.macaroon
+##### OR you can use config to set your values
+$ tdex config list
+$ tdex config set tls_cert_path /path/to/downloaded/cert.pem
+$ tdex config set macaroons_path /path/to/downloaded/admin.macaroon
+$ tdex config set rpcserver tdex.remote.host.ip (IP of your deployed machine)
+
 
 After those are set, you can test tdex-deamon
-$  /usr/bin/tdex listmarket
-$ /usr/bin/tdex help   <-- for more information and commands
+$ tdex listmarket
+$ tdex help   <-- for more information and commands
 ```
-
+For more information please check [this link](https://dev.tdex.network/docs/provider/daemon/getting_started/configure_cli)
 ### Deposit funds
-Please follow [this link](https://dev.tdex.network/docs/provider/daemon/deposit_funds) to deposit funds
+Please follow [this link](https://dev.tdex.network/docs/provider/daemon/deposit_funds) to deposit funds to Open market.
