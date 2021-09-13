@@ -118,4 +118,4 @@ $ tdex help   <-- for more information and commands
 ```
 For more information please check [this link](https://dev.tdex.network/docs/provider/daemon/getting_started/configure_cli)
 ### Deposit funds
-Please follow [this link](https://dev.tdex.network/docs/provider/daemon/deposit_funds) to deposit funds to Open market.
+**Done!** Now you are ready to [deposit funds](https://dev.tdex.network/docs/provider/daemon/deposit_funds) to open a market and earn swap fees.
