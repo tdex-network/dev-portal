@@ -95,7 +95,7 @@ $ ln -s build/tdex-linux-platform /usr/bin/tdex
 
 Once you have installed TDEX CLI, you would need to download TLS and Macaroons from your tdexd host machine in order to connect remotely. This command will download whole gated/ folder which is copy of your container deamon. 
 ```sh
-$  scp -r ubuntu@your.tdex.host.ip:/path/to/tdexd/ /path/to/local/destination
+$  scp -r user@your.tdex.host.ip:/path/to/tdexd/ .
 ```
 
 Proceed with configuring tdex-cli with downloaded macaroons and cert, and add your remote endpoint IP. 
