@@ -111,7 +111,7 @@ $ tdex config init --rpcserver=example.com:9000 --tls_cert_path=./cert.pem --mac
 ##### OR you can use config to set your values
 $ tdex config
 $ tdex config set tls_cert_path /path/to/downloaded/cert.pem
-$ tdex config set macaroons_path /path/to/downloaded/admin.macaroon
+$ tdex config set macaroons_path ./admin.macaroon
 $ tdex config set rpcserver tdex.remote.host.ip (IP of your deployed machine)
 
 
