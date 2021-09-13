@@ -71,7 +71,7 @@ $ docker exec tor onions
 
 ```
 
-Once you have your Onion public key, please follow [this](./docs/provider/registry) tutorial on how to register your Onion endpoint with us. 
+Once you have your Onion public key, please follow [this](../docs/provider/registry) tutorial on how to register your Onion endpoint with us. 
 
 
 
