@@ -52,7 +52,7 @@ Once you have everything in place, just execute deploy.sh and it will prompt you
 Since it is good practice to have backup enabled, please provide S3 bucket name when deploying. 
 Please enter parameters carefully. 
 
-**Make sure you copy IP address after deploy finish**
+**Make sure you copy IP address after deploy is finished.**
 
 That is your tdex endpoint IP, and it can be accessed over port 9000
 ```sh
