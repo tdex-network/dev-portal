@@ -51,6 +51,8 @@ On the AWS AMI Marketplace, find Ubuntu 20.04 public AMI, accessible in the regi
 Once you have everything in place, just execute deploy.sh and it will prompt you for all the parameters in order provided above. 
 Since it is good practice to have backup enabled, please provide S3 bucket name when deploying. 
 Please enter parameters carefully. 
+## Make sure you copy IP address after deploy finish ##
+That is your tdex endpoint IP, and it can be accessed over port 9000
 ```sh
 $ cd terabox/
 $ chmod +x deploy.sh
@@ -84,13 +86,11 @@ When configuring service, we need to provide several things:
  - macaroons_path
  - rpcserver (this will be IP of machine where tdex-box is deployed)
 
-To install Tdex cli you need to clone tdex-deamon repository and build TDEX cli. 
+To install Tdex CLI you need to run getCli.sh located in scripts folder. If installed successfully tdex-cli will print help menu.
 
 ```sh
-$ git clone https://github.com/tdex-network/tdex-daemon
-$ cd tdex-deamon
-$ make build-cli
-$ ln -s build/tdex-linux-platform /usr/bin/tdex
+$ chmod +x terabox/scripts/getCli.sh
+$ sudo ./terabox/scripts/getCli.sh
 ```
 
 Once you have installed TDEX CLI, you would need to download TLS and Macaroons from your tdexd host machine in order to connect remotely. This command will download whole gated/ folder which is copy of your container deamon. 
@@ -104,7 +104,7 @@ Proceed with configuring tdex-cli with downloaded macaroons and cert, and add yo
 ```sh
 # By default it looks for the daemon operator gRPC interface on localhost:9000
 # or on a remote machine
-$ tdex config init --rpcserver=example.com:9000 --tls_cert_path=./cert.pem --macaroons_path=./admin.macaroon
+$ tdex config init --rpcserver=tdex.remote.host.ip:9000 --tls_cert_path=./cert.pem --macaroons_path=./admin.macaroon
 ##### OR you can use config to set your values
 $ tdex config
 $ tdex config set tls_cert_path ./cert.pem
