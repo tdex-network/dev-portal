@@ -51,7 +51,9 @@ On the AWS AMI Marketplace, find Ubuntu 20.04 public AMI, accessible in the regi
 Once you have everything in place, just execute deploy.sh and it will prompt you for all the parameters in order provided above. 
 Since it is good practice to have backup enabled, please provide S3 bucket name when deploying. 
 Please enter parameters carefully. 
+
 **Make sure you copy IP address after deploy finish**
+
 That is your tdex endpoint IP, and it can be accessed over port 9000
 ```sh
 $ cd terabox/
