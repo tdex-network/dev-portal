@@ -1,7 +1,8 @@
 ---
-slug: tdex-terraform-deploy
+slug: tdex-terraform-deploy-aws
 title: Deploy a TDEX Daemon to AWS with Terraform
 author: Alexander K
+draft: true
 author_title: TDEX Contributor
 tags: [terraform, automation, tdex, deploy]
 ---
