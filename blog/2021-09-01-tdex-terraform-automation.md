@@ -51,7 +51,7 @@ On the AWS AMI Marketplace, find Ubuntu 20.04 public AMI, accessible in the regi
 Once you have everything in place, just execute deploy.sh and it will prompt you for all the parameters in order provided above. 
 Since it is good practice to have backup enabled, please provide S3 bucket name when deploying. 
 Please enter parameters carefully. 
-## Make sure you copy IP address after deploy finish ##
+**Make sure you copy IP address after deploy finish**
 That is your tdex endpoint IP, and it can be accessed over port 9000
 ```sh
 $ cd terabox/
@@ -77,16 +77,16 @@ Once you have your Onion public key, please follow [this](../docs/provider/regis
 
 
 
-### Use TDEX CLI to interact with tdexd endpoint
+### Install and use TDEX-CLI
 
 TDEX is a CLI (GRPC client), that can be used to interact with remote TDEX-deamon endpoint. 
-We need to init/configure tdex-cli, which is way of authenticating to deamon. 
+We need to init/configure tdex-cli, which is way of authenticating to remote running deamon. 
 When configuring service, we need to provide several things:
  - tls_cert_path
  - macaroons_path
  - rpcserver (this will be IP of machine where tdex-box is deployed)
 
-To install Tdex CLI you need to run getCli.sh located in scripts folder. If installed successfully tdex-cli will print help menu.
+To install Tdex CLI you need to run **getCli.sh** located in scripts folder. If installed successfully tdex-cli will print help menu.
 
 ```sh
 $ chmod +x terabox/scripts/getCli.sh
