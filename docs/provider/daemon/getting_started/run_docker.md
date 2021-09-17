@@ -5,13 +5,13 @@ sidebar_position: 2
 
 Running a daemon as a dockerized container solution is easy as pulling the official image from the oraganization's Github Container registry:
 
-```sh
+```bash
 $ docker pull ghcr.io/tdex-network/tdexd:latest
 ```
 
 and starting a container with this image:
 
-```sh
+```bash
 # Run on Liquid network connecting to blockstream.info for sourcing blockchain data
 $ docker run -it -d --name tdexd --restart unless-stopped -p 9945:9945 -p 9000:9000 -v `pwd`/tdexd:/.tdex-daemon ghcr.io/tdex-network/tdexd:latest
 
@@ -29,7 +29,7 @@ With the above commands, you'll find a new `tdexd` folder in your current path, 
 
 Check the logs:
 
-```sh
+```bash
 $ docker logs tdex
 INFO[0000] trader interface is listening on :9945
 INFO[0000] operator interface is listening on :9945
@@ -37,7 +37,7 @@ INFO[0000] operator interface is listening on :9945
 
 Note that the official image comes also with the CLI, so you can create an alias to use it like it was present in your path like:
 
-```sh
+```bash
 $ alias tdex='docker exec tdexd tdex'
 ```
 

@@ -18,19 +18,19 @@ The very first thing to do after you started your daemon is to setup the interna
 
 If you want to create a new wallet, you should find useful generating a random mnemonic seed with:
 
-```sh
+```bash
 $ tdex genseed
 ```
 
 Now that you have a seed, you can initialize the daemon's wallet:
 
-```sh
+```bash
 $ tdex init --seed "<generatedSeed>" --password <mypassword>
 ```
 
 **OR**, instead, if you want to import and restore an existing wallet:
 
-```sh
+```bash
 $ tdex init --seed "<mySeed>" --password <mypassword> --restore
 ```
 
@@ -38,7 +38,7 @@ Keep in mind that restoring a wallet can take a while, depeneding on the total n
 
 The daemon locks its embedded wallet after the initalization has succeded, so the next step is to unlock it with the password:
 
-```sh
+```bash
 $ tdex unlock --password <mypassword>
 ```
 
@@ -66,7 +66,7 @@ $ tdex claimfee --outpoints '[{"hash": <txid>, "index": <vout>}]'
 
 The same flow applies to create a market, so first of all get some address(es) for the market:
 
-```sh
+```bash
 # To create a new market and derive addresses for that account
 $ tdex depositmarket [--num_of_addresses]
 # To derive addresses for an already existing market
@@ -77,7 +77,7 @@ Now send some amount of base asset (by default is LBTC) and quote asset of choic
 
 Again, after the tx gets confirmed you can claim the deposits for the market:
 
-```sh
+```bash
 # You need tell to the CLI for which market you are claiming the funds to
 $ tdex config set base_asset <baseAssethash>
 $ tdex config set quote_asset <quoteAssethash>
@@ -133,7 +133,7 @@ To abort it, instead, you can use the `--recover_funds_to_address`  flag as desc
 
 You can check the status of the market with:
 
-```sh
+```bash
 $ tdex listmarket
 ```
 
@@ -141,14 +141,14 @@ $ tdex listmarket
 
 * Set the CLI to work with the newly created market:
 
-```sh
+```bash
 $ tdex config set base_asset <baseAssethash>
 $ tdex config set quote_asset <quoteAssethash>
 ```
 
 You can always check the current state with the following command
 
-```sh
+```bash
 $ tdex config
 ```
 
@@ -156,14 +156,14 @@ Now the following commands will be executed against this market.
 
 * Open the market using automated market making
 
-```sh
+```bash
 $ tdex open
 ```
 This makes the selected market available for trading using the BALANCED market strategy
 
 * Close the market
 
-```sh
+```bash
 $ tdex close
 ```
 
@@ -171,7 +171,7 @@ This makes the selected market NOT available for trading.
 
 * Update the percentage fee
 
-```sh
+```bash
 $ tdex percentagefee --basis_point 100
 ```
 
@@ -179,7 +179,7 @@ This updates the current market percentage fee to 1% (by default it's 0.25%).
 
 * Update the fixed fee
 
-```sh
+```bash
 $ tdex fixedfee --base_fee 600 --quote_fee 20000
 ```
 
@@ -191,20 +191,20 @@ This updates the current market fixed fees (by default they're 0).
 
 * Change market making strategy to pluggable
 
-```sh
+```bash
 $ tdex strategy --pluggable
 ```
 
 * Update the price
 
-```sh
+```bash
 $ tdex price --base_price=16000 --quote-price=0.001
 ```
 This updates the current market price to be used for future trades.
 
 * Open the market again
 
-```sh
+```bash
 $ tdex open
 ```
 

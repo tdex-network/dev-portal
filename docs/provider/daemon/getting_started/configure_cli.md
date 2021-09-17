@@ -33,7 +33,7 @@ You can still use `config set` or `config init` in case you want to customize yo
 
 Depending on how you started the daemon, you need to initialize your CLI like:
 
-```sh
+```bash
 # By default it looks for the daemon operator gRPC interface on localhost:9000
 $ tdex config init
 # If the daemon is running on regtest
@@ -46,7 +46,7 @@ Run `tdex config init --help` to see the list of all supported flags.
 
 You can always check the current state with the following command:
 
-```sh
+```bash
 $ tdex config
 # network: regtest
 # explorer_url: http://localhost:3001
@@ -58,14 +58,14 @@ $ tdex config
 
 The entries of the state of the CLI are configurable with:
 
-```sh
+```bash
 # To set the current network
 $ tdex config set <state_key> <value>
 ```
 
 If, for example, you're running the CLI on local machine while your daemon is in a remote one, you'll need to specify the path where to find the macaroons file and the TLS cert path like:
 
-```sh
+```bash
 # To set the path where to find admin.macaroon
 $ tdex config set macaroons_path path/to/admin.macaroons
 # To set the path where to fing cert.pem
@@ -74,7 +74,7 @@ $ tdex config set tls_cert_path path/to/cert.pem
 
 If instead, your dameon's Operator interface is not proteced by this type of authentication/authorization (meaning you exported the env var TDEX_NO_MACAROONS=true at start-up), then you need to run:
 
-```sh
+```bash
 # To not use macaroons auth
 $ tdex config set no_macaroons true
 ```

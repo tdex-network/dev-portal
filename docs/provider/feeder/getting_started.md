@@ -22,7 +22,7 @@ If you want to build it from source, you can follow the steps described in the [
 
 Now that you have the binary, it's time to execute it:
 
-```sh
+```bash
 # This requires having a config.json file in the same directory of the binary
 $ ./feederd-linux-amd64
 
@@ -36,7 +36,7 @@ $ ./feederd-linux-amd64
 
 If you want to serve your feeder as a dockerized service, just download the latest image locally and run the container:
 
-```sh
+```bash
 # Pull the image from the github container registry
 $ docker pull ghcr.io/tdex-network/feederd:latest
 
@@ -59,7 +59,7 @@ If you want to connect your feeder to a daemon with macaroon/TLS enabled on the 
 
 #### Example for standolone feeder
 
-```sh
+```bash
 $ export $FEEDER_CONFIG_PATH=~/.feeder-config/config.json
 $ ./feederd
 ```
@@ -89,7 +89,7 @@ Feeder's config file:
 
 #### Example for dockerized feeder
 
-```sh
+```bash
 # Note that the files must be mounted as volumes of the container!
 $ docker run -rm -d \
     --name feederd \

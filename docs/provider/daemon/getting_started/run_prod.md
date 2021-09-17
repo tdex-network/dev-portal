@@ -22,7 +22,7 @@ You must have a static IP or a DNS name at which to reach your machine and confi
 Before starting the daemon, export the environment variables `TDEX_OPERATOR_EXTRA_IP` and/or `TDEX_OPERATOR_EXTRA_DOMAIN` like for example:
 
 - Standalone:
-    ```sh
+    ```bash
     $ export TDEX_OPERATOR_EXTRA_IP=54.170.20.39
     $ export TDEX_OPERATOR_EXTRA_DOMAIN=provider.mydomain.network
 
@@ -31,7 +31,7 @@ Before starting the daemon, export the environment variables `TDEX_OPERATOR_EXTR
     ```
 
 - Docker:
-  ```sh
+  ```bash
   # Start a dockerized daemon with macaroons/TLS enabled ONLY on Operator interface
   $ docker run -it -d \
     --name tdexd \
@@ -56,7 +56,7 @@ It is possible to enable TLS encryption and requiring to establish a secure conn
 For this, you must obtain a valid TLS certificate from a trusted Certificate Authotity (for example [Let's Encrypt](https://letsencrypt.org/), [ZeroSSL](https://zerossl.com/), etc.) and export the `TDEX_SSL_KEY` and `TDEX_SSL_CERT` environment variables with the paths of your TLS key and cert files:
 
 - Standalone:
-    ```sh
+    ```bash
     # In this example the TLS key/cert were previously generated with the help of
     # Let's Encrypt and placed in a dedicated directory into the daemon datadir
     $ export TDEX_SSL_KEY=~/.tdex-daemon/trade-tls/privatekey.pem
@@ -66,7 +66,7 @@ For this, you must obtain a valid TLS certificate from a trusted Certificate Aut
     $ tdexd
     ```
 - Docker:
-    ```sh
+    ```bash
     # Start a dockerized daemon with TLS enabled ONLY on Trade interface
     $ docker run -it -d \
     --name tdexd \
@@ -88,7 +88,7 @@ If your daemon remote host uses a linux system, instead of enabling TLS on the T
 
 If you opted for a dockerized solution, doing so if as simple as starting a container:
 
-```sh
+```bash
 # If you already have an onion key you can use it by exporting env var,
 # otherwise just skip this step.
 $ export ONION_KEY=<your_oniion_key_as_base64>
@@ -114,14 +114,14 @@ Now that your daemon is up and running on your remote machine, if you made your 
 
 To do this, you need to import in your local machine a copy of both the macaroon named `admin.macaroon` and the TLS certificate named `cert.pem` that you can find in the daemon's datadir. If, for example you have SSH access to the remote host you can take advantage of the `scp` command:
 
-```sh
+```bash
 $ scp ubuntu@provider.mydomain.network:~/.tdex-daemon/macaroons/admin.macaroon ~/.tdex-daemon-remote/admin.macaroon
 $ scp ubuntu@provider.mydomain.network:~/.tdex-daemon/tls/cert.pem ~/.tdex-daemon-remote/cert.pem
 ```
 
 Now you're ready to properly configure the local Operator CLI to connect to the remote daemon:
 
-```sh
+```bash
 $ tdex config init --macaroons_path ./admin.macaroon --tls_cert_path ./cert.pem --rpc_address provider.mydomain.network:9000
 ```
 

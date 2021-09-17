@@ -15,7 +15,7 @@ A webhook is defined by an event for which it's registered to, an endpoint that 
 
 A webhook can be added to those handled by the daemon with:
 
-```sh
+```bash
 # To add a secured webhook
 $ tdex addwebhook --action TRADE_SETTLED --endpoint http://localhost:8888/endpoint --secret supersecret
 # To add a non-secured webhook
@@ -29,7 +29,7 @@ The daemon in response returns the id of the newly webhook created.
 
 You can list all the webhooks registered for some specific event with:
 
-```sh
+```bash
 $ tdex listwebhooks --action TRADE_SETTLED
 # [
 #   {
@@ -47,7 +47,7 @@ A list of webhooks showing their id, event, endpoint and wheter a secret is set 
 
 A webhook can be removed by specifing its id with the command:
 
-```sh
+```bash
 $ tdex removewebhook --id 00000-000-000-0000
 # removed hook with id: 00000-000-000-0000
 ```
