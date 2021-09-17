@@ -9,13 +9,13 @@ Command line interface for making swaps and trades on TDEX
 
 * Install with **yarn**
 
-```sh
+```bash
 $ yarn global add tdex-cli
 ```
 
 * Install with **npm**
 
-```sh
+```bash
 $ npm i -g tdex-cli
 ```
 
@@ -25,7 +25,7 @@ By default, the `tdex-cli` will use the `~/.tdex-cli` as data directory, current
 
 Configure custom directory for data persistence. You should have write permissions.
 
-```sh
+```bash
 $ export TDEX_CLI_PATH=/absolute/path/to/data/dir
 $ tdex-cli help
 ```
@@ -36,7 +36,7 @@ $ tdex-cli help
 
 - Show current persisted state
 
-```sh
+```bash
 $ tdex-cli info
 ```
 
@@ -46,7 +46,7 @@ $ tdex-cli info
 
 > NOTICE With the --explorer flag you can set your own electrum REST server (Blockstream/electrs) for connecting to the blockchain.
 
-```sh
+```bash
 # Mainnet
 # This uses blockstream.info as explorer
 $ tdex-cli network liquid
@@ -61,7 +61,7 @@ $ tdex-cli network regtest --explorer http://localhost:3001
 
 - Create or Restore Wallet
 
-```sh
+```bash
 $ tdex-cli wallet
 ```
 
@@ -73,13 +73,13 @@ $ tdex-cli wallet address
 
 - Get Wallet Balance
 
-```sh
+```bash
 $ tdex-cli wallet balance
 ```
 
 - Send from Wallet
 
-```sh
+```bash
 $ tdex-cli wallet send
 ```
 
@@ -87,7 +87,7 @@ $ tdex-cli wallet send
 
 - Select and connect to a liquidity provider
 
-```sh
+```bash
 $ tdex-cli connect https://provider.tdex.network:9945
 ```
 
@@ -97,19 +97,19 @@ From this point, all the commands will work against this selected provider.
 
 - List all available markets for current provider
 
-```sh
+```bash
 $ tdex-cli market list
 ```
 
 - Select a market to use for trading
 
-```sh
+```bash
 $ tdex-cli market LBTC-USDt
 ```
 
 - Get current exchange rate for selected market
 
-```sh
+```bash
 $ tdex-cli market price
 ```
 
@@ -117,7 +117,7 @@ $ tdex-cli market price
 
 - Start a swap against the selected provider
 
-```sh
+```bash
 $ tdex-cli trade
 ```
 
@@ -129,7 +129,7 @@ This example shows how to buy and sell tokens using a tdex daemon running on a [
 
 1. Clone and build the daemon from [Tdex-network/tdex-daemon](https://github.com/TDex-network/tdex-daemon)
 
-```sh
+```bash
 $ git clone https://github.com/TDex-network/tdex-daemon
 $ cd tdex-daemon
 $ make build-linux
@@ -140,14 +140,14 @@ $ make build-cli-linux
 
 `make run-linux` sets env variables such as the daemon use the default nigiri regtest network.
 
-```sh
+```bash
 $ nigiri start --liquid
 $ make run-linux
 ```
 
 Then let's use the operator CLI to setting up our daemon.
 
-```sh
+```bash
 # init the cli configuration
 $ ./build/tdex-linux-amd64 config init
 # generate a new mnemonic
@@ -159,7 +159,7 @@ $ ./build/tdex-linux-amd64 unlock --password secret
 ```
 Next, we need to fund the **fee account** of our provider. 
 
-```sh
+```bash
 $ ./build/tdex-linux-amd64 depositfee
 # the wallet will return a confidential address, we need to send some LBTC to this one
 # here, we use nigiri faucet for example
@@ -169,7 +169,7 @@ $ nigiri faucet --liquid YOUR_FEE_ACCOUNT_ADDRESS_HERE
 
 Well, now let's create a market:
 
-```sh
+```bash
 # first create an empty market
 $ ./build/tdex-linux-amd64 depositmarket
 # this will return an address, we need to send it some LBTC and some ALTCOIN
@@ -185,7 +185,7 @@ $ nigiri mint YOUR_MARKET_ADDRESS 100
 
 We need to open the new market, by default a new market is not tradable.
 
-```sh
+```bash
 # Select the market using `config set`
 $ ./build/tdex-linux-amd64 config set base_asset 5ac9f65c0efcc4775e0baec4ec03abdde22473cd3cf33c0419ca290e0751b225
 $ ./build/tdex-linux-amd64 config set quote_asset ALTCOIN_ASSET_HASH_HERE
@@ -199,7 +199,7 @@ Congrats! The daemon is running and has a tradable market LBTC/ALTCOIN.
 
 Now we will use `tdex-cli`, the CLI for traders.
 
-```sh
+```bash
 # set up network to regtest + config local nigiri explorer
 $ tdex-cli network regtest --explorer http://127.0.0.1:3001
 # connect to localhost daemon
@@ -213,7 +213,7 @@ $ nigiri faucet --liquid TRADER_ADDRESS_HERE
 
 Our trader account owns LBTC, thus he can use `trade` to SELL them (and so buy some altcoins!).
 
-```sh
+```bash
 # list the market available
 $ tdex-cli market list
 # copy the market recently created, it should be something like 'LBTC-6f02'
@@ -225,7 +225,7 @@ $ tdex-cli trade
 
 We have sent 1 LBTC and receive 50.125 ALTCOINs ! Now I BUY some LBTC using my ALTCOINs:
 
-```sh
+```bash
 # Select the BUY option this time!
 $ tdex-cli trade
 # and follow the instructions, try to buy 1 BTC

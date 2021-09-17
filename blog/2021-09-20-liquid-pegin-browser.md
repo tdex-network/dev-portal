@@ -12,7 +12,7 @@ Any wallet developer can integrate trustless Liquid Bitcoin peg-in features in t
 
 <!--truncate-->
 
-```sh
+```bash
 npm install --save pegin
 # or with yarn
 yarn add pegin

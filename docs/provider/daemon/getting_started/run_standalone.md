@@ -14,7 +14,7 @@ In order to run the daemon as a standalone executable you need to:
 
 Now you're ready to start it up:
 
-```sh
+```bash
 # Run on Liquid network connecting to blockstream.info for sourcing blockchain data
 $ tdexd
 

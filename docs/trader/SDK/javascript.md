@@ -8,13 +8,13 @@ https://github.com/TDex-network/tdex-sdk
 
 - Install with **yarn**
 
-```sh
+```bash
 $ yarn add tdex-sdk
 ```
 
 - Install with **npm**
 
-```sh
+```bash
 $ npm install --save tdex-sdk
 ```
 
