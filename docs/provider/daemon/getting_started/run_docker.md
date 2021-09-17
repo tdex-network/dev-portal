@@ -31,8 +31,8 @@ Check the logs:
 
 ```bash
 $ docker logs tdex
-INFO[0000] trader interface is listening on :9945
-INFO[0000] operator interface is listening on :9945
+# INFO[0000] trader interface is listening on :9945
+# INFO[0000] operator interface is listening on :9945
 ```
 
 Note that the official image comes also with the CLI, so you can create an alias to use it like it was present in your path like:

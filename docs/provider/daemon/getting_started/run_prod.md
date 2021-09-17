@@ -27,7 +27,7 @@ Before starting the daemon, export the environment variables `TDEX_OPERATOR_EXTR
     $ export TDEX_OPERATOR_EXTRA_DOMAIN=provider.mydomain.network
 
     # Start a daemon with macaroons/TLS enabled ONLY on Operator interface
-    tdexd
+    $ tdexd
     ```
 
 - Docker:
