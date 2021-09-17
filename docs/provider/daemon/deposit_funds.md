@@ -106,9 +106,17 @@ If, for any reason, the process fails (like for example you pasted the wrong txi
 $ tdex fragmentfee --txid <txid1> --txid <txid2> ...
 ```
 
-The fragmenter is smart enough to recognize if any previous attempt exited before being completed. In that case, it expects you to resume that one by providing the list of funding txids. If this time everything's allright, the process will complete as described above, otherwise you'll need to repeat the resume again. Only after a fragmentation process is completed, it is possible to go for another one.
+The fragmenter is smart enough to recognize if any previous attempt exited before being completed. In that case, it expects you to resume that one by providing the list of funding txids. If this time everything's allright, the process will complete as described above. Only after a fragmentation process is completed, it is possible to go for another one.
 
-Now it's time to use the fragmenter to deposit market funds, so as before, get an ephemeral address where to send the Market reserves to:
+Another option is to abort the pending process instead of resuming it:
+
+```bash
+$ tdex fragmentfee --recover_funds_to_address <address>
+```
+
+With the `--recover_funds_to_address` you can specify an address where to send all the funds owned by the fragmenter and abort the process instead of completing it.
+
+The fragmenter can be used also for market's deposits, and starting the interactive process is as easy as running:
 
 ```bash
 $ tdex fragmentmarket
@@ -120,6 +128,8 @@ Fund the temporary wallet address and prompt the txid(s) of the funding tx(s).
 Press _ENTER_ to confirm and continue the process in order to calculate the optimal number of fragments and to send them to the daemon's market account.
 
 If, for any reason, the process fails, the same resume flow described above applies for `fragmentmarket --txid <txid1> ...`.
+
+To abort it, instead, you can use the `--recover_funds_to_address`  flag as described above.
 
 You can check the status of the market with:
 
@@ -202,6 +212,18 @@ Congratulations! Your daemon is now ready to accept trade proposals from all ove
 
 Check all the trades served by the daemon (including those ongoing and those that have been rejected or expired) with:
 
-```sh
+```bash
+# List all trades for the current market.
+# If no market is configured in the cli state, it lists all trades for all markets
 $ tdex listtrades
+
+# List trades for market with pagination and default page size
+$ tdex listtrades --page 1
+
+# List trades for market with pagination and custom page size
+$ tdex listtrades --page 1 --page_size 20
+
+
+# List all trades for all markets
+$ tdex listtrades --all
 ```
