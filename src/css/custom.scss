@@ -37,8 +37,11 @@
 	/**/
 	/* Fonts */
 	--ifm-code-font-size: 95%;
-	--ifm-font-family-base: 'DMSans';
-	--ifm-font-family-monospace: 'DMMono';
+	--ifm-font-family-base: 'RobotoMono';
+	// monospace is used for code
+	--ifm-font-family-monospace: 'RobotoMono';
+	--ifm-heading-font-family: 'Oswald';
+	--ifm-heading-font-weight: '200';
 	@media (min-width: 1201px) {
 		--ifm-font-size-xxl: 5rem;
 		--ifm-font-size-xl: 2.5rem;
@@ -94,6 +97,7 @@
 	--ifm-breakpoint-l: 1024px;
 	--ifm-breakpoint-xl: 1200px;
 	/**/
+	--ifm-button-font-weight: '300';
 	--ifm-button-background-color: var(--ifm-color-tertiary);
 	--ifm-button-color: var(--ifm-color-primary-darker);
 	--ifm-button-size-multiplier: 1.6;
@@ -121,5 +125,5 @@ html[data-theme='light'] {
 }
 
 .footer__copyright {
-	font-family: 'DMMono', sans-serif;
+	font-family: 'RobotoMono', sans-serif;
 }
