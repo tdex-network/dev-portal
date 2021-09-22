@@ -2,7 +2,7 @@
 slug: liquid-pegin-browser
 title: Liquid Bitcoin peg-in(s) in the browser!
 author: Marco Argentieri
-draft: true
+draft: false
 author_title: TDEX Contributor
 author_image_url: https://avatars.githubusercontent.com/u/3596602
 tags: [pegin, liquid, tdex, bitcoin]
