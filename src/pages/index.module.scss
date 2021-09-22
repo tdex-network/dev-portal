@@ -18,7 +18,6 @@
     text-shadow: 0 -3px 3px var(--ifm-color-primary-darkest), 0 3px 3px var(--ifm-color-primary-darkest);
     
     h1 {
-      font-family: var(--ifm-font-sub-heading);
       font-size: var(--ifm-font-size-xxl);
       @media (min-width: 760px) {
         letter-spacing: 2rem;
@@ -26,7 +25,6 @@
       margin-bottom: 40px;
     }
     h2 {
-      font-family: var(--ifm-font-heading);
       font-size: var(--ifm-font-size-xl);
       @media (min-width: 760px) {
         letter-spacing: 0.8rem;
