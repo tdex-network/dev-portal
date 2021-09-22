@@ -51,7 +51,7 @@ Finally, you are ready to deposit funds: you can either [manually deposit funds]
 In order to manually send funds to the daemon wallet, you need to get a deposit address from the fee account:
 
 ```
-$ tdex depositfee [--num_of_addresses]
+$ tdex fee deposit [--num_of_addresses]
 ```
 
 Use the `--num_of_addresses` flag to get more than one address to send funds to multiple addresses.
@@ -61,16 +61,16 @@ Now send some L-BTC that will be used to subsidize Liquid network fees.
 After the transaction get confirmed, you can claim the deposits for the fee account:
 
 ```
-$ tdex claimfee --outpoints '[{"hash": <txid>, "index": <vout>}]'
+$ tdex fee claim --outpoints '[{"hash": <txid>, "index": <vout>}]'
 ```
 
 The same flow applies to create a market, so first of all get some address(es) for the market:
 
 ```bash
 # To create a new market and derive addresses for that account
-$ tdex depositmarket [--num_of_addresses]
+$ tdex market deposit [--num_of_addresses]
 # To derive addresses for an already existing market
-$ tdex depositmarket --base_asset <basetAsset> --quote_asset <quoteAssethash> [--num_of_addresses]
+$ tdex market deposit --base_asset <basetAsset> --quote_asset <quoteAssethash> [--num_of_addresses]
 ```
 
 Now send some amount of base asset (by default is LBTC) and quote asset of choice to the address(es) - such as USDt or LCAD.
@@ -82,7 +82,7 @@ Again, after the tx gets confirmed you can claim the deposits for the market:
 $ tdex config set base_asset <baseAssethash>
 $ tdex config set quote_asset <quoteAssethash>
 
-$ tdex claimmarket --outpoints '[{"hash": <txid>, "index": <vout>}, {...}]'
+$ tdex market claim --outpoints '[{"hash": <txid>, "index": <vout>}, {...}]'
 ```
 
 ### Fragmenter tool
@@ -134,7 +134,7 @@ To abort it, instead, you can use the `--recover_funds_to_address`  flag as desc
 You can check the status of the market with:
 
 ```bash
-$ tdex listmarket
+$ tdex listmarkets
 ```
 
 ## Manage a market
@@ -157,14 +157,14 @@ Now the following commands will be executed against this market.
 * Open the market using automated market making
 
 ```bash
-$ tdex open
+$ tdex market open
 ```
 This makes the selected market available for trading using the BALANCED market strategy
 
 * Close the market
 
 ```bash
-$ tdex close
+$ tdex market close
 ```
 
 This makes the selected market NOT available for trading.
@@ -172,7 +172,7 @@ This makes the selected market NOT available for trading.
 * Update the percentage fee
 
 ```bash
-$ tdex percentagefee --basis_point 100
+$ tdex market percentagefee --basis_point 100
 ```
 
 This updates the current market percentage fee to 1% (by default it's 0.25%).
@@ -180,7 +180,7 @@ This updates the current market percentage fee to 1% (by default it's 0.25%).
 * Update the fixed fee
 
 ```bash
-$ tdex fixedfee --base_fee 600 --quote_fee 20000
+$ tdex market fixedfee --base_fee 600 --quote_fee 20000
 ```
 
 :::tip
@@ -192,20 +192,20 @@ This updates the current market fixed fees (by default they're 0).
 * Change market making strategy to pluggable
 
 ```bash
-$ tdex strategy --pluggable
+$ tdex market strategy --pluggable
 ```
 
 * Update the price
 
 ```bash
-$ tdex price --base_price=16000 --quote-price=0.001
+$ tdex market price --base_price=16000 --quote-price=0.001
 ```
 This updates the current market price to be used for future trades.
 
 * Open the market again
 
 ```bash
-$ tdex open
+$ tdex market open
 ```
 
 Congratulations! Your daemon is now ready to accept trade proposals from all over the world.
