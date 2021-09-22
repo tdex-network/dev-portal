@@ -1,0 +1,9 @@
+// Hack because can't be targeted with Infima css variables
+.sidebarItemLinkActive_node_modules-\@docusaurus-theme-classic-lib-next-theme-BlogSidebar-styles-module {
+	color: var(--ifm-color-tertiary) !important;
+}
+html[data-theme='light'] {
+	.sidebarItemLinkActive_node_modules-\@docusaurus-theme-classic-lib-next-theme-BlogSidebar-styles-module {
+		color: var(--ifm-color-primary) !important;
+	}
+}
