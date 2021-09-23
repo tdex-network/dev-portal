@@ -40,10 +40,10 @@ module.exports = {
       ],
     },
     footer: {
-      style: 'dark',
+      style: 'light',
       links: [
         {
-          title: 'Docs',
+          title: 'DOCS',
           items: [
             {
               label: 'Trader',
@@ -56,7 +56,7 @@ module.exports = {
           ],
         },
         {
-          title: 'Community',
+          title: 'COMMUNITY',
           items: [
             {
               label: 'Twitter',
@@ -65,7 +65,7 @@ module.exports = {
           ],
         },
         {
-          title: 'More',
+          title: 'MORE',
           items: [
             {
               label: 'Blog',
