@@ -23,6 +23,9 @@ const trade = new Trade({
 
 > `utxos` are [JS objects](https://github.com/vulpemventures/ldk/blob/master/src/types.ts#L33) wrapping utxo's data. They can be fetched without LDK. However, they **must** be unblinded in case of [confidential outputs](https://elementsproject.org/features/confidential-transactions).
 
+
+
+:::tip
 ### TOR proxy for web clients
 
 Natively, web browsers do not support TOR protocol. That's why we are using a [tor-proxy](https://github.com/tdex-network/tor-proxy) to redirect requests to onion endpoints. By default, clients use `https://proxy.tdex.network` as proxy. If you want to use your own, you must specify your proxy endpoint in `Trade` constructor.
@@ -32,6 +35,7 @@ Example with a custom proxy hosted at *https://my.custom.tor-proxy.endpoint*.
 const trade = new Trade(tradeOpts, "https://my.custom.tor-proxy.endpoint");
 ```
 > `tradeOpts.providerUrl` should be an onion endpoint here.
+:::
 
 ### Market
 
