@@ -18,7 +18,7 @@ A **Trader** proposes new swaps using the provider's market rate. A trader can c
 
 **Implement your own client using on these TDEX SDKs:**
 
-* [JavaScript](SDK/javascript.md)
+* [JavaScript](SDK/Javascript/install.md)
 * Python (Coming soon)
 * Go (Coming soon)
 * Rust (Coming soon)
