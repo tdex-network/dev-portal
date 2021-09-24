@@ -101,6 +101,9 @@
 	--ifm-button-background-color: var(--ifm-color-tertiary);
 	--ifm-button-color: var(--ifm-color-primary-darker);
 	--ifm-button-size-multiplier: 1.6;
+	--ifm-footer-background-color: #000000;
+	--ifm-footer-title-color: var(--ifm-color-tertiary);
+	--ifm-footer-link-color: #FFFFFF;
 	--ifm-footer-link-hover-color: var(--ifm-color-tertiary-darker);
 	--ifm-link-color: var(--ifm-color-tertiary-darker);
 	--ifm-link-hover-decoration: none;
@@ -115,6 +118,9 @@
 html[data-theme='light'] {
 	--ifm-button-background-color: var(--ifm-color-tertiary);
 	--ifm-button-color: var(--ifm-color-primary-darker);
+	--ifm-footer-background-color: var(--ifm-color-secondary-lighter);
+  --ifm-footer-title-color: var(--ifm-color-tertiary-darker);
+	--ifm-footer-link-color: var(--ifm-color-primary);
 	--ifm-footer-link-hover-color: var(--ifm-color-tertiary-darker);
 	--ifm-link-color: var(--ifm-color-tertiary-darkest);
 	--ifm-link-hover-color: var(--ifm-color-tertiary-darker);
