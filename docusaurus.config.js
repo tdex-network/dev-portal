@@ -40,7 +40,6 @@ module.exports = {
       ],
     },
     footer: {
-      style: 'light',
       links: [
         {
           title: 'DOCS',
