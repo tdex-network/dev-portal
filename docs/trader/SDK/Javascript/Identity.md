@@ -5,7 +5,7 @@ sidebar_position: 2
 
 Identities are Javascript objects representing the trader's private key(s). They come from [Liquid Development Kit (LDK)](https://github.com/vulpemventures/ldk) and implement the [IdentityInterface](https://github.com/vulpemventures/ldk/blob/master/src/identity/identity.ts#L32-L52). `tdex-sdk` re-exports LDK classes, types and functions.
 
-### Instanciate a `Mnemonic` Identity
+### Create a `Mnemonic` Identity instance 
 
 ```js
 import { IdentityOpts, MnemonicOpts, IdentityType, Mnemonic } from "tdex-sdk";
