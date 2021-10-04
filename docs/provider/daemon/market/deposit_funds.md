@@ -31,7 +31,7 @@ $ tdex config set quote_asset b33ddc389d5dabae5b8e371b535433b1c18505ecf656fce6ca
 
 You're ready to deposit the funds! You can choose to [manually deposit the funds](#manually-deposit-funds) into the market or to use the [Fragmenter](#fragmenter) to automatically split funds sent to an ephemeral address into many smaller ones that will be deposited into the market.
 
-## Manually deposit funds
+## Manually deposit funds
 
 Get some deposit address(es):
 
