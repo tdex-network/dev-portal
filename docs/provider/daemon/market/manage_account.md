@@ -81,7 +81,7 @@ $ tdex market addresses
 
 It returns a list of all derived confidential addresseses and related private blinding keys.
 
-## Update the percetange fee of the market
+## Update the percetange fee of the market
 
 The percentage fee is that fee charged/taken on the counter amount due to the trader when it makes a proposal. The fee is charged or taken depending on the type of the trade (BUY or SELL respectively). It is express in basis point and can assum values in the range [1, 9999], ie. from 0.01% to 99.99% of the traded amount.
 
@@ -93,7 +93,7 @@ $ tdex market percentagefee --basis_point 100
 When a market is created, by default the percentage fee is set to `250` typically. This value is customizable via the `TDEX_DEFAUL_FEE` env var before starting the daemon. If you plan to open several markets on your daemon all of them with the same percentage fee, consider exporting the environment variable instead of manually update it for every market with the operator CLI.
 :::
 
-## Update the fixed fee of the market
+## Update the fixed fee of the market
 
 Since your daemon will always pay for network fees, you may want to specify a fixed fee that will be charged to the trades so that the traders contribute indirectly to cover the fee amount of the transactions.
 

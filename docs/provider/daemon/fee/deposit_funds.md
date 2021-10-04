@@ -5,7 +5,7 @@ sidebar_position: 1
 
 The daemon is designed to pay for Liquid network fees to include a transaction in the blockchain, whether it is a trade between the daemon and a trader or a withdraw from one of the HD wallet accounts.
 
-The Fee account is the very first account you should send funds to. This account is designed to handle only LBTCs funds. If you deposit funds of some other asset type, don't panic, you'll stll be able to withdraw them as long as you actually deposit LBTCs into this account.
+The Fee account is the very first account you should send funds to. This account is designed to handle only LBTCs funds. If you deposit funds of some other asset type you'll stll be able to withdraw them.
 
 Since this account is meant to only pay for network fees, it will need to cover very low amounts, like ~700 sats/vbyte per transaction is its a trade, even lower for withdrawls. Therefore, it is suggested to fund it with multiple UTXOs with small amounts like for example 2000 or 5000 sats.  
 
@@ -78,7 +78,7 @@ $ tdex fragmentfee --recover_funds_to_address <address>
 This will send all the funds owned by the fragmenter to the specified address and abort the process instead of completing it.
 
 :::tip
-If you have funds stuck on the ephemeral wallet of the fragmenter, it is strongly suggested to backup your operator CLI datadir (usually located at `~/.tdex-operator` in Linux or `~/Library/Application\ Support/Tdex-operator in OSX) as long as you haven't completed or aborted the process, in order to prevent loosing them if you delete the datadir by accident.
+If you have funds stuck on the ephemeral wallet of the fragmenter, it is strongly suggested to backup your operator CLI datadir (usually located at `~/.tdex-operator` in Linux or `~/Library/Application\ Support/Tdex-operator` in OSX) as long as you haven't completed or aborted the process, in order to prevent loosing them if you delete the datadir by accident.
 :::
 
 This is all you have to do, the fragmenter will take care all the rest. Once the process is completed you'll be ready to [create and deposit funds to a new market](../market/deposit_funds.md), but still consider taking a look also at how you can [manage the fee account](manage_account.md).

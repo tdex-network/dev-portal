@@ -5,9 +5,10 @@ sidebar_position: 1
 
 The flow to create and deposit funds to a new market has been changed starting from version v0.6.0.
 
-Depending on the version you're runnning you want to follow the steps for [v0.6.0 and above](#v0.6.0-or-higher), or those for [previous versions](#v0.5.3-or-older).
+Before this version the market's asset pair was deducted by the daemon by checking the asset types of the claimed deposits.  
+Starting from v0.6.0 you're in charge of explicitly create a market by specifying its asset pair before sending funds to it.
 
-## v0.6.0 or higher
+## Create a new market
 
 Starting from v0.6.0 the first thing you have to do for opening a market is to explicitly create it by specifying its asset pair:
 
