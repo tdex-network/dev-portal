@@ -12,4 +12,4 @@ The daemon can be served in one of the following ways:
 
 After the daemon is up and running you need to [configure the operator CLI](configure_cli.md) to be able to use it to play with your daemon.
 
-If you have already done all this steps, you are ready to [deposit some funds](../deposit_funds.md) to open a market.
+If you have already done all this steps, you are ready to [deposit some funds on the Fee account](../fee/deposit_funds.md) and then to [create and deposit some funds on a market](../market/deposit_funds.md).

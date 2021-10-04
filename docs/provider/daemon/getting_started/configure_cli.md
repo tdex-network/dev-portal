@@ -79,4 +79,4 @@ If instead, your dameon's Operator interface is not proteced by this type of aut
 $ tdex config set no_macaroons true
 ```
 
-You're now ready to [deposit some funds](../deposit_funds.md) to open a market.
+You're now ready to [deposit some funds on the Fee account](../fee/deposit_funds.md) and then to [create and deposit some funds on a market](../market/deposit_funds.md)..
