@@ -9,8 +9,8 @@ It exposes two HTTP/2 gRPC interfaces, one meant to be public and consumed by tr
 
 The daemon comes with an embedded Liquid HD wallet and sources blockchain information via a block explorer. At the time of writing, only the [Blockstream fork of Electrs](https://github.com/blockstream/electrs) is supported, sticking with [Blockstream.info APIs](https://blockstream.info/liquid/api/).
 
-The HD wallet is organized in multiple sub accounts, each one with is own purpose:
-* **Fee account**: owns only LBTCs funds and is used to pay for Liquid network fees of the trade or withdrawal transactions.
+The HD wallet is organized in multiple sub accounts, each one with its own purpose:
+* **Fee account**: owns only LBTCs funds and is used to pay for Liquid network fees for trade or withdrawal transactions.
 * **Wallet account**: this aims to be a personal wallet that you can use to send/receive your funds. The daemon does not store any data internally for this account.
 * **Market account(s)**: each market is associated with a unique account of the HD wallet and owns funds of exactly 2 asset, the asset pair of the market.
 
