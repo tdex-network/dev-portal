@@ -21,6 +21,11 @@ You can see the full list of supported flags anytime with
 $ unlockerd --help
 ```
 
+This service requires the daemon to be at least running to connect with it. It could be started even before initializing the daemon's HD wallet with a mnemonic and a password.  
+In this case, be sure that the password used during the initialization matches the one used by the Unlocker.
+
+This service automatically stops after its attempt to unlock the daemon either succeeded or failed.
+
 ## Unlock with file
 
 The file provider is the default one used by the unlocker. 

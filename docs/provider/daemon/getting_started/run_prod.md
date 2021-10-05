@@ -125,4 +125,4 @@ Now you're ready to properly configure the local Operator CLI to connect to the 
 $ tdex config init --macaroons_path ./admin.macaroon --tls_cert_path ./cert.pem --rpc_address provider.mydomain.network:9000
 ```
 
-That's it! About time for you to [initialize your daemon with a seed and password](../deposit_funds.md#initialize-and-unlock-the-wallet) and [deposit funds](../deposit_funds.md#deposit-funds) and open some markets.
+That's it! About time for you to [initialize your daemon with a seed and password](../init_daemon.md).

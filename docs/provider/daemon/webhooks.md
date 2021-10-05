@@ -1,13 +1,13 @@
 ---
 title: 'Webhooks'
-sidebar_position: 4
+sidebar_position: 6
 ---
 
 The daemon supports handling webhooks that can be invoked whenever a certain event occurs during its lifecycle. Following, there's the list of all events a webhook can be registered for:
 
 * [TRADE_SETTLED](#event-payload "trade_settled")
 * [ACCOUNT_WITHDRAW](#event-payload "account_withdraw")
-* ACCOUNT_LOW_BALANCE (coming soon)
+* [ACCOUNT_LOW_BALANCE](#event-payload "account_low_balance")
 
 A webhook is defined by an event for which it's registered to, an endpoint that is invoked whenever the event occurs, and optionally a secret used to sign a [JWT token](https://jwt.io/introduction) to authenticate requests.
 
@@ -62,7 +62,7 @@ As mentioned, the daemon takes care of authenticating its requests by adding a J
 
 ### TRADE_SETTLED
 
-Example:
+Example of payload for *TRADE_SETTLED* event:
 
 ```json
 {
@@ -90,7 +90,7 @@ Example:
 
 ### ACCOUNT_WITHDRAW
 
-Example:
+Example of payload for market *ACCOUNT_WITHDRAW* event:
 
 ```json
 {
@@ -109,5 +109,39 @@ Example:
     "quote_balance": 276940871878
   }
 }
+```
+
+### ACCOUNT_LOW_BALANCE
+
+Example of fee *ACCOUNT_LOW_BALANCE* event:
+
+```json
+{
+	"account": {
+		"type": "fee",
+		"index": 0
+	},
+	"balance": 100
+}
+
+```
+
+Example of market ACCOUNT_LOW_BALANCE event:
+
+
+```json
+{
+	"account": {
+		"type": "market",
+		"base_asset": "6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d",
+		"quote_asset": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2",
+		"index": 5
+	},
+	"balance": {
+		"base_amount": 100,
+		"quote_amount": 2000000000,
+	}
+}
+
 ```
 
