@@ -86,7 +86,7 @@ For this, you must obtain a valid TLS certificate from a trusted Certificate Aut
 
 If your daemon remote host uses a linux system, instead of enabling TLS on the Trade interface, you can alternatively run a Tor hidden service acting as a proxy in front of it.
 
-If you opted for a dockerized solution, doing so if as simple as starting a container:
+If you opted for a dockerized solution, doing so is as simple as starting a container:
 
 ```bash
 # If you already have an onion key you can use it by exporting env var,
