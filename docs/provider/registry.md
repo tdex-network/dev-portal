@@ -36,7 +36,7 @@ To add your provider to the list, first fork the repository and [open a pull req
 
 ### 3. Availability
 
-We automatically check your provider: we call the `Markets` service endpoint looking for succesful reply and a **non-empty array** of markets. 
+We automatically check your provider: we call the `Markets` service endpoint looking for successful reply and a **non-empty array** of markets. 
 
 
 # JSON SCHEMA
