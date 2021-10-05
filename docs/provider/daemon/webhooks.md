@@ -3,7 +3,7 @@ title: 'Webhooks'
 sidebar_position: 6
 ---
 
-The daemon supports handling webhooks that can be invoked whenever a certain event occurs during its lifecycle. Following, there's the list of all events a webhook can be registered for:
+The daemon supports handling webhooks that can be invoked whenever a certain event occurs during its lifecycle. This is the list of all events a webhook can be registered for:
 
 * [TRADE_SETTLED](#event-payload "trade_settled")
 * [ACCOUNT_WITHDRAW](#event-payload "account_withdraw")
