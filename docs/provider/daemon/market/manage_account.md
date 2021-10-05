@@ -113,9 +113,9 @@ The fixed fee is also used by the daemon as a way to discourage trades with very
 
 ## Update the strategy of the market
 
-The AMM strategy defines how basically your daemon calculates the current price for a market. By default, when a market is created the strategy is set to `BALANCED`, which is a strategy that uses the constant product formula. This means that the current price depends exclusively from the balances of your market and the counter amount for a trade proposal is calculated by keeping constant the product of the base and quote asset balances.
+The AMM strategy defines how your daemon calculates the current price for a market. By default, when a market is created the strategy is set to `BALANCED`, which is a strategy that uses the constant product formula. This means that the current price depends exclusively from the balances of your market and the counter amount for a trade proposal is calculated by keeping constant the product of the base and quote asset balances.
 
-At the time of writing (v0.6.0), the daemon supports only another type of strategy which is named `PLUGGABLE`. This strategy basically requires you to manually update the current base and quote price of the market, plugging in an external price feed that can be done by calling the `UpdateMarketPrice` RPC of the Operator interface.
+At the time of writing (v0.6.0), the daemon supports only another type of strategy which is named `PLUGGABLE`. This strategy requires you to manually update the current base and quote price of the market, plugging in an external price feed that can be done by calling the `UpdateMarketPrice` RPC of the Operator interface.
 
 To update the strategy of your selected market run:
 
@@ -147,7 +147,7 @@ $ tdex market price --base_price 40000 --quote-price 0.000025
 
 ## Open the market
 
-TìYour market is ready to be opened by running: 
+Your market is ready to be opened by running: 
 
 ```bash
 $ tdex market open
@@ -155,9 +155,9 @@ $ tdex market open
 # market is open
 ```
 
-This command makes the market tradable, therefore it will be visibile by traders by calling the ListMarkets RPC of the public Trade interface of the daemon,
+This command makes the market tradable, therefore it will be visibile by traders by calling the ListMarkets RPC of the public Trade interface of the daemon.
 
-## Close a market
+## Close a market
 
 To close the market run:
 
