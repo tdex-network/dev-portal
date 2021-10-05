@@ -3,7 +3,7 @@ title: 'Run with Docker'
 sidebar_position: 2
 ---
 
-Running a daemon as a dockerized container solution is easy as pulling the official image from the oraganization's Github Container registry:
+Running a daemon as a dockerized container solution is easy as pulling the official image from the organization's Github Container registry:
 
 ```bash
 $ docker pull ghcr.io/tdex-network/tdexd:latest
