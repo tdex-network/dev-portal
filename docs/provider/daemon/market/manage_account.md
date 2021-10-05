@@ -83,8 +83,7 @@ It returns a list of all derived confidential addresseses and related private bl
 
 ## Update the percetange fee of the market
 
-The percentage fee is a fee added to or deducted from the trade amount, depending on the type of the trade (BUY or SELL respectively). It is expressed in basis point and can assume values in the range [1, 9999], ie. from 0.01% to 99.99% of the traded amount.
-
+The percentage fee is a fee added to or deducted from the counter amount of a trade proposal, depending on the type of the trade (BUY or SELL respectively). It is expressed in basis point and can assume values in the range [1, 9999], ie. from 0.01% to 99.99% of the traded amount.
 
 ```bash
 $ tdex market percentagefee --basis_point 100
