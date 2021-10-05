@@ -33,7 +33,7 @@ The file provider is the default one used by the unlocker.
 It requires you to specify a path of the file containing the password in plaintext to use for unlocking the daemon with the flag `--password_path`.
 
 By default, this provider also assumes that the daemon's datadir has not been customized, therefore it looks within its default datadir path to possibly load the TLS certificate created by the daemon needed by the unlocker to establish a secure connection.  
-Anyways, it's possible to specify the path of the TLS certificate with the flag `--tls_cert_path` if you have it somewhere else.  
+Otherwise, it's possible to specify the path of the TLS certificate with the flag `--tls_cert_path` if you have it somewhere else.  
 In case the daemon is running in *no macaroons* mode, this provider shouldn't find any certificate in the daemon's datadir, signaling the unlocker that no TLS termination is required. 
 
 Example:
