@@ -12,6 +12,7 @@ On the other side, the feeder must have the proper macaroon and TLS certificate 
 ## Configuration
 
 ### JSON file
+
 The Feeder is configured with a JSON file like the following:
 
 ```json
@@ -27,7 +28,7 @@ The Feeder is configured with a JSON file like the following:
         {
           "macaroons_path": "",
           "tls_cert_path": "",
-          "rpc_address": "localhost:9000",
+          "rpc_address": "localhost:9000"
         }
       ]
     }
@@ -43,7 +44,6 @@ Note that `targets` is defined as a JSON list in order to let the feeder forward
 Similarly, `markets` is also a JSON list therefore it's possible to configure the feeder to ask for feeds related to multiple markets. Each market has its own targets that will be updated periodically.
 
 The latest version of this tool (v0.2.1 at the time of writing) supports only Kraken as price feeder.
-
 
 ### Environment variables
 
