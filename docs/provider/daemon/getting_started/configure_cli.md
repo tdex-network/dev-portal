@@ -45,3 +45,7 @@ $ tdex config set no_macaroons true
 ```
 
 You're now ready to [initialize and unlock your daemon's internal HD wallet](../init_daemon.md).
+
+## Configure the CLI with tdexdconnect
+
+If you don't want to manually customize the default configuration of your Operator CLI and you're looking for a way to automatize this process, you can check out how to use _tdexdconnect_ to [configure the CLI](../../tdexdconnect.md#generate-connection-url-for-operator-cli) before initializing your wallet.
