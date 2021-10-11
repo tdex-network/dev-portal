@@ -3,7 +3,7 @@ title: 'Init & Unlock'
 sidebar_position: 3
 ---
 
-Once the daemon is up and runnning and you have configured your CLI, the very next step is to initialize and unlock the daemon's HD wallet.
+Once the daemon is up and running and you have configured your CLI, the very next step is to initialize and unlock the daemon's HD wallet.
 
 You can either [setup a brand new wallet](#setup-new-wallet), or you can [restore one with a mnemonic](#restore-from-mnemonic) used previously by another daemon.
 
