@@ -64,5 +64,5 @@ $ tdexdconnect --out url --macaroons_path ~/.tdex-daemon/macaroons/price.macaroo
 
 In the example above the feeder will connect the daemon in localhost, but you can change the daemon's address with the `--rpcserver` flag if you need.
 
-Now you can follow the steps to [start a feeder service](feeder/overview.md).
+You're ready to follow the steps to [start a feeder service](feeder/overview.md#connect-to-target-with-tdexdconnect-url).
 
