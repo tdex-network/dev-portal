@@ -37,48 +37,63 @@ That's it! You have funded the fee account. Now you can take a look at how to [m
 
 ## Fragmenter
 
-The fragmenter is an interactive process that helps you splitting few UTXOs into many fragments of `5000` satoshis. It makes use of an ephemeral single-key wallet that is no longer used after the process is completed (or aborted).  
+The fragmenter helps you splitting few UTXOs into many fragments of `5000` satoshis each, becoming funds of the daemon's Fee account. It makes use of an ephemeral single-key wallet that is discarded after the process is completed or aborted. A brand new wallet is used for every new fragmentation.
 
-To start the fragmenter for the Fee account run:
-
-```bash
-$ tdex fragmentfee
-# INFO[0000] send funds to address: el1qqtqj6psznm2km5axsj8qxgduzzznzjvmxfs3qh7h83hsp72hp0s5hzzwlzv92cgr44qtl4krrykddyv6xtcmvpusqraynmn0k
-# INFO[0000] Enter txid of fund(s) separated by a white space [press ENTER to skip or confirm]:
-```
-
-After generating and showing the ephemeral address, the command waits for you to prompt the txid of the funding tx(s).  
-Press _ENTER_ to confirm and continue the process: the tool calculates the optimal number of fragments based on the amount detected and sends the deposit fragments to the daemon's fee account.
-
-You can optionally start the fragmenter by specifying the max number of possible fragments it is allowed to create. By default it is set to 50 if not specified:
+Starting the process is as simple as running the command below:
 
 ```bash
-$ tdex fragmentfee --max_fragments 20
+$ tdex fee deposit --fragment [--max_fragments]
+# send funds to the following address: el1qqtqj6psznm2km5axsj8qxgduzzznzjvmxfs3qh7h83hsp72hp0s5hzzwlzv92cgr44qtl4krrykddyv6xtcmvpusqraynmn0k
+# press ENTER to continue after the funds have been trasferred to the fragmenter:
+# 
+# ***** after pressing ENTER *****
+# 
+# fetching funds for ephemeral wallet
+# 
+# calculating fragments for LBTC funds
+# 
+# detected 2 fund(s) of total amount 100000 that will be split into 20 fragments
+# 
+# crafting fee deposit transaction
+# 
+# broadcasting transaction
+# 
+# fee account funding transaction: d76c79295ad3ba56480bd3829ab2f058189bb1fc32eebf4b8c326d2369fcb1de
+# 
+# claiming deposits for fee account
+# 
+# fragmentation succeeded
 ```
 
-:::tip
-Take into account that the --max_fragments value basically defines the max number of outputs for the Fee account's deposit transaction.  
-In the Liquid network, transactions that weights more that 100K vBytes are rejected for being too heavy, therefore you should set this value at max to `70` or you'll risk to bump into this issue.
-:::
+You can optionally set the max number of fragments that can be generated when splitting the funds sent to the ephemeral wallet.  
+By default, this value is set to `50` and is highly discouraged to increase it because transactions with too many outputs won't be included in blockchain becuase their weight could exceed the max tx size of 100K bytes.
 
-If, for any reason, the process fails (like for example you pasted the wrong txid, or you forgot to unlock the wallet before this step) you can always resume it with:
+When you funded the ephemeral wallet address and the transaction has been included in blockchain, you can press _ENTER_ and the process will continue by fetching the utxos of the ephemeral wallet and splitting them into multiple deposits for the Fee account.
+
+If for any reason the fragmentation does not succeed you can retry by running the same command again and just pressing _ENTER_.  
+The ephemeral wallet does not change until the process is either completed or aborted.
+
+To abort a fragmentation, you can run:
 
 ```bash
-$ tdex fragmentfee --txid <txid1> --txid <txid2> ...
+$ tdex fee deposit --fragment --recover_funds_to_address el1qqwg8mnllqtlh8fhcvwfjqt8eapptmh2l39cegs0a89qyu9hp6upyg8tu35l9z83crtqrrgps8ma4fn358sghku2d3e378y7aw
+# press ENTER to continue after the funds have been trasferred to the fragmenter
+#
+# fetching funds for ephemeral wallet
+#
+# found 1 unspents with amount per asset:
+#
+# 5ac9f65c0efcc4775e0baec4ec03abdde22473cd3cf33c0419ca290e0751b225: 99999868 (network fees deducted)
+#
+# crafting recover trasaction
+#
+# broadcasting transaction
+#
+# sent all ephemeral wallet funds to address el1qqwg8mnllqtlh8fhcvwfjqt8eapptmh2l39cegs0a89qyu9hp6upyg8tu35l9z83crtqrrgps8ma4fn358sghku2d3e378y7aw in tx: 71d1af7be9f2c74b6b83dfb13dc2e046e817ec01b9255344b8be1359a9b3a778
+#
+# recover succeeded
 ```
 
-The fragmenter is smart enough to recognize if any previous attempt exited before being completed. In that case, it expects you to resume that one by providing the list of funding txids. If this time everything's allright, the process will complete as described above. Only after a fragmentation process is completed, it is possible to go for another one.
+Change the address in the example with an address of yours. Press _ENTER_ when asked, and the fragmenter will send back all its funds to your address and abort the process so a new one can eventually be done later.
 
-Another option is to abort the pending process instead of resuming it and send the "stuck" funds back to an address of yours instead of depositing them into the daemon HD wallet:
-
-```bash
-$ tdex fragmentfee --recover_funds_to_address <address>
-```
-
-This will send all the funds owned by the fragmenter to the specified address and abort the process instead of completing it.
-
-:::tip
-If you have funds stuck on the ephemeral wallet of the fragmenter, it is strongly suggested to backup your operator CLI datadir (usually located at `~/.tdex-operator` in Linux or `~/Library/Application\ Support/Tdex-operator` in OSX) as long as you haven't completed or aborted the process, in order to prevent loosing them if you delete the datadir by accident.
-:::
-
-This is all you have to do, the fragmenter will take care all the rest. Once the process is completed you'll be ready to [create and deposit funds to a new market](../market/deposit_funds.md), but still consider taking a look also at how you can [manage the fee account](manage_account.md).
+That's it. As you can see the fragmenter is really handful because it helps depositing funds to the daemon with just one command. Once the process is completed you're ready to [create and deposit funds to a new market](../market/deposit_funds.md), but still consider taking a look also at how you can [manage the fee account](manage_account.md).
