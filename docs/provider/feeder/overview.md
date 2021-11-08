@@ -3,7 +3,7 @@ title: 'Overview'
 sidebar_position: 1
 ---
 
-[TDex Feeder](https://github.com/tdex-network/tdex-feeder) is a service useful to feed one or more markets of one or more daemons with prices sourced from an exchange.
+[TDEX Feeder](https://github.com/tdex-network/tdex-feeder) is a service useful to feed one or more markets of one or more daemons with prices sourced from an exchange.
 
 The prices are fed to the daemon by consuming its `UpdateMarketPrice` RPC of the Operator interface.  
 The daemon, therefore, requires to be fully initialized and synced in order to receive and store incoming prices.  
@@ -31,7 +31,7 @@ The Feeder is configured with a JSON file like the following:
 
 By default, each `price_feeder` implementation comes with a list of well-known markets that maps the Liquid asset pair of some market to the ticker used by the exchange.
 
-At the time of writing TDex Feeder supports Kraken, Bitfinex and Coinbase exchanges as `price_feeder`s and they come with the following well-known markets:
+At the time of writing TDEX Feeder supports Kraken, Bitfinex and Coinbase exchanges as `price_feeder`s and they come with the following well-known markets:
 * _L-BTC/L-USDt_ (Kraken, Bitfinex, Coinbase)
   * _L-BTC_ asset: `6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d`
   * _L-USDt_ asset: `ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2`
