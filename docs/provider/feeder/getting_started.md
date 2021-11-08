@@ -70,18 +70,11 @@ Feeder's config file:
 {
     "price_feeder": "kraken",
     "interval": 300000,
-    "markets": [
+    "targets": [
       {
-        "base_asset": "6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d",
-        "quote_asset": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2",
-        "ticker": "XBT/USDT",
-        "targets": [
-          {
-            "macaroons_path": "/home/user/.feeder-config/price.macaroon",
-            "tls_cert_path": "/home/user/.feeder-config/cert.pem",
-            "rpc_address": "provider.mydomain.com:9000"
-          }
-        ]
+        "macaroons_path": "/home/user/.feeder-config/price.macaroon",
+        "tls_cert_path": "/home/user/.feeder-config/cert.pem",
+        "rpc_address": "provider.mydomain.com:9000"
       }
     ]
 }
@@ -105,18 +98,11 @@ Feeder's config file:
 {
     "price_feeder": "kraken",
     "interval": 300000,
-    "markets": [
+    "targets": [
       {
-        "base_asset": "6f0279e9ed041c3d710a9f57d0c02928416460c4b722ae3457a11eec381c526d",
-        "quote_asset": "ce091c998b83c78bb71a632313ba3760f1763d9cfcffae02258ffa9865a37bd2",
-        "ticker": "XBT/USDT",
-        "targets": [
-          {
-            "macaroons_path": "/price.macaroon",
-            "tls_cert_path": "/cert.pem",
-            "rpc_address": "provider.mydomain.com:9000"
-          }
-        ]
+        "macaroons_path": "/price.macaroon",
+        "tls_cert_path": "/cert.pem",
+        "rpc_address": "provider.mydomain.com:9000"
       }
     ]
 }
