@@ -3,7 +3,7 @@ title: 'Fee Fragmenter Account'
 sidebar_position: 6
 ---
 
-Starting from v0.7.2, the daemon internal wallet makes use of 2 new special accounts. One of them is the Fee Fragmenter account.
+Starting from v0.8, the daemon internal wallet makes use of 2 new special accounts. One of them is the Fee Fragmenter account.
 
 This account aims to optimize the process of depositing funds to the Fee acccount.  
 You can send relative large amounts of L-BTC to the addresses of this account that will be then splitted in many fragments of 5000 sats each, and become funds of the Fee account.
