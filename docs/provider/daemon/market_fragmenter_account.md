@@ -3,7 +3,7 @@ title: 'Market Fragmenter Account'
 sidebar_position: 6
 ---
 
-Starting from v0.7.2, the daemon internal wallet makes use of 2 new special accounts. One of them is the Market Fragmenter account.
+Starting from v0.8, the daemon internal wallet makes use of 2 new special accounts. One of them is the Market Fragmenter account.
 
 This account aims to optimize the process of depositing funds for any market acccount.  
 You can send relative large amounts of both base and quote assrts to the addresses of this account that will be then splitted in many fragments, and become funds of the Fee account.
