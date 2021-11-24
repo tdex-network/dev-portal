@@ -88,4 +88,4 @@ You should use a stronger and safer password for your daemon's HD wallet than th
 Also, be sure to backup the mnemonic of your daemon's wallet, store it in a safe place, and don't share it with anybody.
 :::
 
-Great! You've initialized and unlocked your daemon. It's time to [deposit funds into the Fee account](fee/deposit_funds.md) and then [create and fund a new market](market/deposit_funds.md).
+Great! You've initialized and unlocked your daemon. It's time to [deposit funds into the Fee account](fee_account.md) and then [create and fund a new market](market/deposit_funds.md).

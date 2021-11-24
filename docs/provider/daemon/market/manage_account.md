@@ -71,10 +71,10 @@ $ tdex market addresses
 # 			"address": "el1qq2gn3y2r5405dppjk2yc2tjg0zxxy35fr0y9lc3yyrnyf07ktuht0ymzrh8hnjwl62w9ws6jwl3yh40k8cd26wfc27sug3rmh",
 # 			"blinding": "2fab376ffecbee0cb7b70794373be35c7b24340a2652f1a10c8200b04ab3eedb"
 # 		},
-#     {
-#     	"address": "el1qq092gt6vyda85eqmqk5xh6dmjujljvm5mjzurn9k36nu6f6veheqqyh3hgtlwpd0y70tdccf5ua395hugwjv2ccw237cl9tal",
-#     	"blinding": "7eab1dea4e504bb90ff96e692393ecb55f9edf9e4c840cd820e24ef27f4a27b0"
-#     }
+# 		{
+# 			"address": "el1qq092gt6vyda85eqmqk5xh6dmjujljvm5mjzurn9k36nu6f6veheqqyh3hgtlwpd0y70tdccf5ua395hugwjv2ccw237cl9tal",
+# 			"blinding": "7eab1dea4e504bb90ff96e692393ecb55f9edf9e4c840cd820e24ef27f4a27b0"
+# 		}
 # 	]
 # }
 ```

@@ -1,6 +1,6 @@
 ---
 title: 'Webhooks'
-sidebar_position: 6
+sidebar_position: 8
 ---
 
 The daemon supports handling webhooks that can be invoked whenever a certain event occurs during its lifecycle. This is the list of all events a webhook can be registered for:
