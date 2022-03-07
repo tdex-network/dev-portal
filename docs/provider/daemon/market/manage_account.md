@@ -81,9 +81,11 @@ $ tdex market addresses
 
 It returns a list of all derived confidential addresseses and related private blinding keys.
 
-## Update the percetange fee of the market
+## Update the relative fee of the market
 
-The percentage fee is a fee added to or deducted from the counter amount of a trade proposal, depending on the type of the trade (BUY or SELL respectively). It is expressed in basis point and can assume values in the range [1, 9999], ie. from 0.01% to 99.99% of the traded amount.
+The relative fee is a percentage fee added to or deducted from the counter amount of a trade proposal, depending on the type of the trade (BUY or SELL respectively). It is expressed in basis point (bp) and can assume values in the range [1, 9999], ie. from 0.01% to 99.99% of the traded amount. 
+For example, a trader selling LBTC on a LBTC-USDt market with a relative fee set to 100bp means that 1% of the receiving USDt amount is kept by the liquidity provider.
+Inversely, a trader buying LBTC on a LBTC-USDt market with a relative fee set to 100bp means that the trader will have to pay 1% more of the USDt amount to be sent in order to pay the liquidity provider.
 
 ```bash
 $ tdex market percentagefee --basis_point 100
