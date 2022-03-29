@@ -79,7 +79,8 @@ For this, you must obtain a valid TLS certificate from a trusted Certificate Aut
     -v `pwd`/fullchain.pem:/fullchain.pem \
     -e TDEX_SSL_KEY=/privatekey.pem \
     -e TDEX_SSL_CERT=/fullchain.pem \
-    ghcr.io/tdex-network/tdexd:latest
+    ghcr.io/
+  tdex-network/tdexd:latest
     ```
 
 ### Enable Onion for Trade interface
@@ -126,3 +127,30 @@ $ tdex config init --macaroons_path ./admin.macaroon --tls_cert_path ./cert.pem 
 ```
 
 That's it! About time for you to [initialize your daemon with a seed and password](../init_daemon.md).
+
+## Unlock Wallet on start-up
+
+Daemon's wallet can be unlocked, once initialized and (re)started, by providing file path, that contains password, to the daemon through environment variable.
+
+Create password file:
+```bash
+$ echo "mypassword" > pwd.txt
+```
+
+- Standalone:
+    ```bash
+    $ export TDEX_WALLET_UNLOCK_PASSWORD_FILE=./pwd.txt
+    $ tdexd
+    ```
+- Docker:
+    ```bash
+    $ docker run -it -d \
+    --name tdexd \
+    --restart unless-stopped \
+    -p 9945:9945 -p 9000:9000 \
+    -v `pwd`/tdexd:/.tdex-daemon \
+    # Set env var of password file
+    -e TDEX_WALLET_UNLOCK_PASSWORD_FILE:./pwd.txt \
+    # Here, it's required to mount the filepath of password file
+    -v `pwd`/pwd.txt:/pwd.txt \
+    ghcr.io/tdex-network/tdexd:latest
