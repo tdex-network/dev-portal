@@ -79,8 +79,7 @@ For this, you must obtain a valid TLS certificate from a trusted Certificate Aut
     -v `pwd`/fullchain.pem:/fullchain.pem \
     -e TDEX_SSL_KEY=/privatekey.pem \
     -e TDEX_SSL_CERT=/fullchain.pem \
-    ghcr.io/
-  tdex-network/tdexd:latest
+    ghcr.io/tdex-network/tdexd:latest
     ```
 
 ### Enable Onion for Trade interface
