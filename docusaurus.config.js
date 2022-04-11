@@ -45,6 +45,10 @@ module.exports = {
           title: 'DOCS',
           items: [
             {
+              label: 'Specifications',
+              to: '/docs/specs/index',
+            },
+            {
               label: 'Trader',
               to: '/docs/trader/intro',
             },

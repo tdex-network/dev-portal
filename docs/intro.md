@@ -31,7 +31,7 @@ This is the reason why we have been developing TDEX as free open source software
 
 ## Protocol Specifications
 
-[Contribute to Protocol Specification](https://github.com/tdex-network/tdex-specs)
+[Contribute to Protocol Specification](specs/00-index.md)
 
 
 ## Copyright

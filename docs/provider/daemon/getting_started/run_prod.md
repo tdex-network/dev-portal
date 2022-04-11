@@ -127,7 +127,7 @@ $ tdex config init --macaroons_path ./admin.macaroon --tls_cert_path ./cert.pem 
 
 That's it! About time for you to [initialize your daemon with a seed and password](../init_daemon.md).
 
-## Unlock Wallet on start-up
+## Auto-Unlock Wallet on start-up
 
 Daemon's wallet can be unlocked, once initialized and (re)started, by providing file path, that contains password, to the daemon through environment variable.
 

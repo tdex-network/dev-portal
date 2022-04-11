@@ -80,7 +80,7 @@ $ tdex unlock --password "password"
 # Wallet is unlocked
 ```
 
-You may want to take a look at the [Unlocker service](../unlocker.md) if you're searching for a way to automatize this step.
+You may want to take a look at the [Auto-Unlock Wallet on start-up](getting_started/run_prod.md#auto-unlock-wallet-on-start-up) if you're searching for a way to automatize this step.
 
 :::tip
 You should use a stronger and safer password for your daemon's HD wallet than the one used in the example above.
