@@ -26,7 +26,7 @@ If you want to get only one address, you can omit the `--num_of_addresses` flag.
 Now send some L-BTC to the address(es), then claim the deposits for the fee account with:
 
 ```bash
-$ tdex fee claim --outpoints '[{"hash": 248a47a99ae3e6de93a614a05ab1c0e064aa9ea2fb292bfa1b33c48b067cac10, "index": 1}]'
+$ tdex fee claim --outpoints '[{"hash": "248a47a99ae3e6de93a614a05ab1c0e064aa9ea2fb292bfa1b33c48b067cac10", "index": 1}]'
 #
 # fee account is funded
 ```
