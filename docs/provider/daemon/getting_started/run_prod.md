@@ -37,7 +37,7 @@ Before starting the daemon, export the environment variables `TDEX_OPERATOR_EXTR
     --name tdexd \
     --restart unless-stopped \
     -p 9945:9945 -p 9000:9000 \
-    -v `pwd`/tdexd:/.tdex-daemon \
+    -v `pwd`/tdexd:/home/tdex/.tdex-daemon \
     -e TDEX_OPERATOR_EXTRA_IP=54.170.20.39 \
     -e TDEX_OPERATOR_EXTRA_DOMAIN=provider.mydomain.network \
     ghcr.io/tdex-network/tdexd:latest
