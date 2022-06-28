@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdev_portal=self.webpackChunkdev_portal||[]).push([[2535],{5641:function(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Liquid Bitcoin peg-in(s) in the browser!","permalink":"/blog/liquid-pegin-browser"},{"title":"Deploy a TDEX Daemon to AWS with Terraform","permalink":"/blog/tdex-terraform-deploy-aws"}]}')}}]);

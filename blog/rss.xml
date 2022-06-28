@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>TDEX Network Blog</title>
+        <link>https://dev.tdex.network/blog</link>
+        <description>TDEX Network Blog</description>
+        <lastBuildDate>Mon, 20 Sep 2021 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[Liquid Bitcoin peg-in(s) in the browser!]]></title>
+            <link>https://dev.tdex.network/blog/liquid-pegin-browser</link>
+            <guid>liquid-pegin-browser</guid>
+            <pubDate>Mon, 20 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Any wallet developer can integrate trustless Liquid Bitcoin peg-in features in their own application, even in the browser!]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Deploy a TDEX Daemon to AWS with Terraform]]></title>
+            <link>https://dev.tdex.network/blog/tdex-terraform-deploy-aws</link>
+            <guid>tdex-terraform-deploy-aws</guid>
+            <pubDate>Wed, 15 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Configure and run the TDEX box easily using Terraform automation.]]></description>
+        </item>
+    </channel>
+</rss>
