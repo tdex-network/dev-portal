@@ -71,7 +71,9 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title} - Developer Portal`}
-      description="Global P2P network for Liquid market makers and traders">
+      description="Global P2P network for Liquid market makers and traders"
+      image="img/tdex-og-image.png"
+    >
       <HomepageHeader/>
       <main>
         <HomepageFeatures/>
