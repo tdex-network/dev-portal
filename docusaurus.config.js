@@ -10,6 +10,7 @@ module.exports = {
   organizationName: 'tdex-network', // Usually your GitHub org/user name.
   projectName: 'dev-portal', // Usually your repo name.
   themeConfig: {
+    image: 'img/tdex-og-image.png',
     colorMode: {
       defaultMode: 'dark',
     },
