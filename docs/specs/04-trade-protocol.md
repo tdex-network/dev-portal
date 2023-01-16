@@ -51,6 +51,12 @@ service TradeService {
       body: "*"
     };
   }
+  rpc GetMarketPrice(GetMarketPriceRequest) returns (GetMarketPriceResponse) {
+    option (google.api.http) = {
+      post: "/v1/market/price"
+      body: "*"
+    };
+  }
   rpc PreviewTrade(PreviewTradeRequest) returns (PreviewTradeResponse) {
     option (google.api.http) = {
       post: "/v1/market/preview"
@@ -80,6 +86,12 @@ message ListMarketsResponse { repeated MarketWithFee markets = 1; }
 
 message GetMarketBalanceRequest { Market market = 1; }
 message GetMarketBalanceResponse { BalanceWithFee balances = 1; }
+
+message GetMarketPriceRequest { Market market = 1; }
+message GetMarketPriceResponse {
+  double spot_price = 1;
+  uint64 min_tradable_amount = 2;
+}
 
 message PreviewTradeRequest {
   Market market = 1;
