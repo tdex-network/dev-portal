@@ -24,7 +24,7 @@ A **trader** connects to the provider using the [secure transport defined in the
 1. The **Provider** deposits two reserves for each asset forming a *Market*, defined as a pair of BASE ASSET and QUOTE ASSET, and expose a public reachable endpoint.
 2. The **Trader** fetches from the **Provider** the list of supported pairs and linked provider's fees.
 3. The **Trader** passing a supported market in the request recognized by the hashes of two assets, fetches the current **market rate**
-4. The **Trader** proposes a new **swap request** using the price given and awaits for Provider's response.
+4. The **Trader** proposes a new **swap request** using the price given and awaits for Provider's response. The amounts in the swap request must not include the **trading fees*, which must be explictly specified by the trader in the trade proposal message. The amounts in the swap request transaction, instead, must include the fees charged either on its inputs or outputs.
 5. If the **Provider** accepts the terms will send back a **swap accept** message containing the partially signed transaction.
 6. The **Trader** sends the signed transaction to finalize the trade using the **swap complete** message.
 7. The **Provider** will finalize and broadcast the transaction to the network for on-chain settlement.
@@ -105,6 +105,8 @@ message ProposeTradeRequest {
   Market market = 1;
   TradeType type = 2;
   SwapRequest swap_request = 3;
+  string fee_asset = 4;
+  uint64 fee_amount = 5;
 }
 message ProposeTradeResponse {
   SwapAccept swap_accept = 1;
@@ -177,7 +179,14 @@ message Preview {
 
 * **Pool**: Providers can register into a distributed service mesh with other providers pooling together liquidity. This acts as a first responder for traders to lookup for provider's aggregated offers. A provider could run alone OR in a pool, but not both at the same time with the same reserves.
 
-* **Swap fee**: A small percentage of the amount of the trade can be taken out by the provider and added to the reserves, besides the network fees. Since the provider is conveniently in charge of paying network fees, and also to discourage low-amount trades, he could also charge an additional fixed fee amount to the trade to be partially reimbursed for this expense. While the *BASE_ASSET-QUOTE_ASSET* reserve ratio is constantly shifting, fees make sure that the total combined reserve size increases with every trade.
-Guaranteed arbitrage opportunities from price fluctuations should push a steady flow of transactions through the system and increase the amount of fee revenue generated.
-
 * **Automated Market Making**: A liquidity provider has full control over the market making strategy to apply needed to calculate the **market rate** at which to accept trades. That being said, there is a possibility to apply an automated market-making relying only on the reserves balances and the amount requested by the trader, without the need to connect to an external price feed. One of the most famous algorithms is called *constant product market-making*. In short, this model generates a full order-book based on an initial price for the market. Every transaction that occurs on this market will adjust the prices of the market accordingly. It's a basic supply and demand automated market making system. 
+
+* **Trading fee**: A small percentage of the amount of the trade can be taken out by the provider and added to the reserves, besides the network fees. Since the provider is conveniently in charge of paying network fees, and also to discourage low-amount trades, he could also charge an additional fixed fee amount to the trade to be partially reimbursed for this expense. While the *BASE_ASSET-QUOTE_ASSET* reserve ratio is constantly shifting, fees make sure that the total combined reserve size increases with every trade.
+Guaranteed arbitrage opportunities from price fluctuations should push a steady flow of transactions through the system and increase the amount of fee revenue generated.  On the trader side, he can decide to pay the trading fees in either the base or the quote asset of a market. When making a trade proposal, the fees must be explictly specified in the request message along with the swap request one. The swap request's amounts must not include the trading fees while they must be charged to the amounts of the transaction. It is duty of both parties to make sure the amounts presented in the trade proposal request message match those of the transaction they cooperatively build, sign and broadcast.  The trading fees must be either added or substracted to amount_p/amount_r of the swap request depending on the trade type and the asset in which fees are going to be payed. The following table resume all possible cases:
+
+  | Trade type | Fee asset   | Sign |
+  |------------|-------------|:----:|
+  | BUY        | base asset  | -    |
+  | BUY        | quote asset | +    |
+  | SELL       | base asset  | +    |
+  | SELL       | quote asset | -    |
