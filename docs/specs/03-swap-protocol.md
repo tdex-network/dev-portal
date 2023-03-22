@@ -36,16 +36,11 @@ message SwapRequest {
   uint64 amount_r = 4;
   // The responder's asset hash
   string asset_r = 5;
-  // The proposer's unsigned transaction in PSET format (base64 string)
+  // The proposer's unsigned transaction in PSETv2 format (base64 string)
   string transaction = 6;
-  // In case of a confidential transaction the blinding key of each confidential
-  // input is included. Each blinding key is identified by the prevout script
-  // hex encoded.
-  map<string, bytes> input_blinding_key = 7;
-  // In case of a confidential transaction the blinding key of each confidential
-  // output is included. Each blinding key is identified by the output script
-  // hex encoded.
-  map<string, bytes> output_blinding_key = 8;
+  // The list of proposer's unblinded inputs data, even in case they are
+  // uncofidential.
+  repeated UnblindedInput unblinded_inputs = 7;
 }
 
 message SwapAccept {
@@ -53,17 +48,12 @@ message SwapAccept {
   string id = 1;
   // indetifier of the SwapRequest message
   string request_id = 2;
-  // The partial signed transaction base64 encoded containing the Responder's
-  // signed inputs in a PSET format
+  // The complete swap transaction in PSETv2 format (base64 string),
+  // signed by the Responder 
   string transaction = 3;
-  // In case of a confidential transaction the blinding key of each confidential
-  // input is included. Each blinding key is identified by the prevout script
-  // hex encoded.
-  map<string, bytes> input_blinding_key = 4;
-  // In case of a confidential transaction the blinding key of each confidential
-  // output is included. Each blinding key is identified by the output script
-  // hex encoded.
-  map<string, bytes> output_blinding_key = 5;
+  // The original list of trader's unblinded inputs updated with those
+  // of the inputs added by the responder.
+  repeated UnblindedInput unblinded_inputs = 4;
 }
 
 message SwapComplete {
@@ -71,8 +61,7 @@ message SwapComplete {
   string id = 1;
   // indetifier of the SwapAccept message
   string accept_id = 2;
-  // The signed transaction base64 encoded containing the Proposers's signed
-  // inputs in a PSET format
+  // The swap transaction in PSETv2 or raw hex format signed by the Proposer
   string transaction = 3;
 }
 
@@ -90,7 +79,7 @@ message SwapFail {
 
 ### SwapRequest 
 
-The `SwapRequest` message is sent by the **Proposer** to the **Responder** to start the swap negotiation. The transaction is a PSET base64 encoded string containing the Proposer's inputs and outputs (amount_r and eventual change).
+The `SwapRequest` message is sent by the **Proposer** to the **Responder** to start the swap negotiation. The transaction is a PSETv2 base64 encoded string containing the Proposer's inputs and outputs (amount_r and eventual change).
 
 ### SwapAccept 
 
