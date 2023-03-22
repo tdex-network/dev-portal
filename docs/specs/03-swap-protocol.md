@@ -75,6 +75,19 @@ message SwapFail {
   // The failure reason messaged
   string failure_message = 4;
 }
+
+message UnblindedInput {
+  // Index of the transaction input of reference.
+  uint32 index = 1;
+  // Unblinded asset.
+  string asset = 2;
+  // Unblinded amount.
+  uint64 amount = 3;
+  // Asset blinider for blinded prevout, 32-byte 0x00..00 if unconfidential.
+  string asset_blinder = 4;
+  // Amount blinider for blinded prevout, 32-byte 0x00..00 if unconfidential.
+  string amount_blinder = 5;
+}
 ```
 
 ### SwapRequest 
