@@ -39,7 +39,7 @@ message SwapRequest {
   // The proposer's unsigned transaction in PSETv2 format (base64 string)
   string transaction = 6;
   // The list of proposer's unblinded inputs data, even in case they are
-  // uncofidential.
+  // unconfidential.
   repeated UnblindedInput unblinded_inputs = 7;
 }
 
@@ -52,7 +52,7 @@ message SwapAccept {
   // signed by the Responder 
   string transaction = 3;
   // The original list of trader's unblinded inputs updated with those
-  // of the inputs added by the responder.
+  // of the inputs added by the responder, whether they're confidential or not.
   repeated UnblindedInput unblinded_inputs = 4;
 }
 
