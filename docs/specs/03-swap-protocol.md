@@ -12,7 +12,7 @@ Identifying with _Alice_ as the **Proposer** and _Bob_ the **Responder**:
 
 1. Alice connects to Bob through secure transport layer and encrypted connection.
 2. Alice proposes a swap crafting an unsigned transaction and a message defined as sending `AMOUNT_P` of `ASSET_P` and receiving `AMOUNT_R` of `ASSET_R`. If confidential, the blinding keys need to be included.
-3. Alice sends to Bob the `SwapRequest` message containing the unsingned transaction. An additional input and eventual change output needed to pay _half_ of the network fees is included by Alice in the transaction.
+3. Alice sends to Bob the `SwapRequest` message containing the unsigned transaction. An additional input and eventual change output needed to pay _half_ of the network fees is included by Alice in the transaction.
 4. Bob, if accepts the terms, funds the swap and partially signs the proposed transaction and includes his blinding keys too.
 5. Bob sends back to Alice the `SwapAccept` message containing the partially signed transaction. An additional input and eventual change output needed to pay the remaining _half_ of the network fees is included by Bob in the transaction.
 6. Alice parses the accepted swap and signs the transaction.
@@ -47,7 +47,7 @@ message SwapRequest {
 message SwapAccept {
   // Random unique identifier for the current message
   string id = 1;
-  // indetifier of the SwapRequest message
+  // Identifier of the SwapRequest message
   string request_id = 2;
   // The complete swap transaction in PSETv2 format (base64 string),
   // signed by the Responder
@@ -60,7 +60,7 @@ message SwapAccept {
 message SwapComplete {
   // Random unique identifier for the current message
   string id = 1;
-  // indetifier of the SwapAccept message
+  // Identifier of the SwapAccept message
   string accept_id = 2;
   // The swap transaction in PSETv2 or raw hex format signed by the Proposer
   string transaction = 3;
@@ -69,7 +69,7 @@ message SwapComplete {
 message SwapFail {
   // Random unique identifier for the current message
   string id = 1;
-  // indetifier of either SwapRequest or SwapAccept message. It can be empty
+  // Identifier of either SwapRequest or SwapAccept message. It can be empty
   string message_id = 2;
   // The failure code. It can be empty
   uint32 failure_code = 3;
