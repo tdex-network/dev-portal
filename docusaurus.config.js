@@ -34,6 +34,11 @@ module.exports = {
         },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
+          type: 'docsVersionDropdown',
+          position: 'right',
+          dropdownActiveClassDisabled: true,
+        },
+        {
           href: 'https://github.com/tdex-network',
           label: 'GitHub',
           position: 'right',
@@ -47,15 +52,15 @@ module.exports = {
           items: [
             {
               label: 'Specifications',
-              to: '/docs/specs/index',
+              to: '/docs/latest/specs/index',
             },
             {
               label: 'Trader',
-              to: '/docs/trader/intro',
+              to: '/docs/latest/trader/intro',
             },
             {
               label: 'Liquidity Provider',
-              to: '/docs/provider/intro',
+              to: '/docs/latest/provider/intro',
             },
           ],
         },
@@ -95,6 +100,24 @@ module.exports = {
           // Please change this to your repo.
           editUrl:
             'https://github.com/tdex-network/dev-portal/edit/master/',
+            lastVersion: 'current',
+            versions: {
+              current: {
+                label: 'latest',
+                path: 'latest',
+                banner: 'none',
+              },
+              '0.9.1': {
+                label: '0.9.1',
+                path: 'v0',
+                banner: 'unmaintained',
+              },
+              '1.0.0': {
+                label: '1.0.0',
+                path: 'v1',
+                banner: 'none',
+              },
+            },
         },
         blog: {
           showReadingTime: true,
