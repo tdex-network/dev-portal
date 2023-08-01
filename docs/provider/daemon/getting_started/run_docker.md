@@ -96,5 +96,9 @@ alias tdex="docker exec tdexd tdex"
 ```
 
 :::tip
-If you struggle starting up the wallet or daemon services and you see some _Permission denied_ error from their logs, try to change the permissions of your volumes folder with `chmod -R 777 volumes`.
+If you have problems while starting up the wallet or the daemon and you see some _Permission denied_ error from their logs it's very likely that your Unix user doesn't have the common uid `1000` - used by default by the docker images.
+
+You can find the uid of your user by listing all of them with `cat /etc/passwd`, and then add a line `user: "<uid>:<uid>"` to every service defined in the compose.
+
+Alternatively, you can directly override the id of your container by running `docker run --user <uid>:<uid> -d ... oceand` and `docker run --user <uid>:<uid> -d ... tdexd`
 :::
