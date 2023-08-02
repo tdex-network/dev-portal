@@ -4,5 +4,8 @@ sidebar_position: 3
 
 # Browser App
 
-Check out https://dex.vulpem.com, the browser app for making trades on TDEX with your Marina Wallet
+There is a community-built browser app for making trades on TDEX with your [Marina Wallet](https://vulpem.com/marina)
+
+🌍 [trade.fuji.money](https://trade.fuji.money) 
+📜 [bordalix/dex.nextjs](https://github.com/bordalix/dex.nextjs)
 
