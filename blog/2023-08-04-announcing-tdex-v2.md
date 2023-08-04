@@ -10,7 +10,7 @@ tags: [liquid, tdex, bitcoin, v2]
 
 Today we are pleased to announce the new version of the TDEX protocol.
 
-The newest `v2` comes with updates to BOTD#3 and BOTD#4 that affect the way a trade is both presented and cooperatively crafted by a trader and a provider.
+The newest `v2` comes with updates to **BOTD#3** and **BOTD#4** that affect the way a trade is both presented and cooperatively crafted by a trader and a provider.
 
 We have released a new major version of all our services in order to be compliant with TDEX v2.
 The newest version `v1.0.0` of the daemon contains very few changes at interface level, but at the same time, under the hood it has been completely refactored by drastically improve its performances.
@@ -21,7 +21,7 @@ And the same stands for the official app! The new `v2.0.0` version of the app is
 
 The main change of the new protocol is the adoption of the new PSETv2 format (BIP-370) as a mean to describe and (cooperatively) build the transactions.
 
-This required inevitable breaking changes to [BOTD#3](../docs/specs/03-swap-protocol.md), so we took the chance to make some little but impactful changes also to [BOTD#4](../docs/specs/04-trade-protocol.md)
+This required inevitable breaking changes to [BOTD#3](/docs/latest/specs/swap-protocol), so we took the chance to make some little but impactful changes also to [BOTD#4](/docs/latest/specs/trade-protocol)
 
 Let's see briefly how the services have changed.
 
@@ -39,7 +39,7 @@ This means that you can configure your provider to connect to some exchange (e.g
 
 The providers comes with the typical CLI - with a rethinked set of commands and flags - and a brand new service that takes care of migrating your daemon from the old `v0.9.x` the the new `v1.0.0`.
 
-Take a look at the [official documentation](../docs/provider/intro.md) and follow the tutorial to know everything you need for managing your provider.
+Take a look at the [official documentation](/docs/latest/provider/intro) and follow the tutorial to know everything you need for managing your provider.
 
 You can see the list of all the new `v2/` APIs by looking directly at the [github repo](https://github.com/tdex-network/tdex-daemon/blob/master/api-spec/protobuf/tdex-daemon/v2).
 
@@ -47,7 +47,7 @@ You can see the list of all the new `v2/` APIs by looking directly at the [githu
 
 The dashboard lets you setup your daemon by the mean of a user interface that might feel you more confortable compared to the CLI.
 
-The main change that affects the new `v1.0.0` version of dashboard is that it supports only daemons with version `1.0.0` and won't be able to connect to older ones. You'll get notified with an error otherwise.
+The main change that affects the new `v1.0.0` version of dashboard is that it supports only daemons with version `v1.0.0` and won't be able to connect to older ones. You'll get notified with an error otherwise.
 
 If you already used the dashboard, you won't see big changes on the user interface beside the higher number of option you have to customize your market.
 
