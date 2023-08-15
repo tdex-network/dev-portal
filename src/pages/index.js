@@ -19,7 +19,7 @@ function HomepageHeader() {
             <img src={TdexLogo} alt="TdexLogo"/>
             <h2><span>TDEX</span> DEV PORTAL</h2>
             <div className={styles.heroBtnContainer}>
-              <Link className="button button--outline" to="/docs">
+              <Link className="button button--outline" to="/docs/latest">
                 <Translate>DOCS</Translate>
               </Link>
               <Link
