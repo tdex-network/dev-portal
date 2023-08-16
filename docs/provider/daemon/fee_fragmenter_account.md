@@ -56,4 +56,4 @@ $ tdex fee withdraw \
   --receivers '[{"asset": "144c654344aa716d6f3abcc1ca90e5641e4e2a7f633bc09fe3baf64585819a49", "amount": 50000, "address": "tex1qr34j6jpqfkct6a2qtu77jn4fqsnxgc2hstk6wq"}]'
 ```
 
-So far so good! It's now time to [create and manage your markets](market_account_.md).
+So far so good! It's now time to [create and manage your markets](market_account.md).

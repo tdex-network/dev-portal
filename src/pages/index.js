@@ -50,12 +50,12 @@ function HomepageCallToAction() {
           </div>
           <div className="col col--4">
             <div className={`row ${styles.btnContainer}`}>
-              <Link className="button button--outline" to="/docs/provider/intro">
+              <Link className="button button--outline" to="/docs/latest/provider/intro">
                 <Translate>DOCS FOR LIQUIDITY PROVIDERS</Translate>
               </Link>
               <Link
                 className="button button--outline"
-                to="/docs/trader/intro">
+                to="/docs/latest/trader/intro">
                 <Translate>DOCS FOR TRADERS</Translate>
               </Link>
             </div>
