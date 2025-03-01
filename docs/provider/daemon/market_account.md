@@ -17,7 +17,7 @@ These are all the properties you can define for every market you create, some of
 ## Create a market
 
 ```bash
-$ tdex market create \
+$ tdex market new \
   --base-asset 144c654344aa716d6f3abcc1ca90e5641e4e2a7f633bc09fe3baf64585819a49 \
   --quote-asset f3d1ec678811398cd2ae277cbe3849c6f6dbd72c74bc542f7c4b11ff0e820958 \
   --base-asset-precision 8 --quote-asset-precision 8 \
@@ -39,6 +39,12 @@ $ tdex config set quote_asset f3d1ec678811398cd2ae277cbe3849c6f6dbd72c74bc542f7c
 ```
 
 All the commands that follow require both `base_asset` and `quote_asset` to be set in your CLI's config file. If you have created multiple markets and you need to switch between them, it's enough to change base and/or quote asset with the `tdex config set` command.
+
+:::tip
+You may look up assets hashes available on the liquid network from the following [link](https://liquid.network/assets/featured).
+
+Asset hashes will vary between mainnet and testnet, so ensure to accomodate accordingly.
+:::
 
 ## Deposit funds
 
@@ -130,6 +136,13 @@ Once you're good with your market configuration and the funds are confirmed, you
 ```bash
 $ tdex market open
 ```
+
+:::caution
+
+The market account needs to be funded with both the base and quote assets. Otherwise, trying to retrieve price information or perform swaps will results in errors.
+
+:::
+
 
 ## Get trading report
 
