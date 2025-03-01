@@ -3,11 +3,13 @@ title: 'Run with Docker'
 sidebar_position: 2
 ---
 
+:::tip
+Ensure the server has at least 2GB of available memory, to avoid running into any out of memory exceptions.
+:::
+
 The easiest way to serve your daemon as a dockerized application is by using `docker compose` so you can well orchestrate your wallet and daemon instances. You can find a similar version of the following `docker-compose.yml` file in the [github repository](https://github.com/tdex-network/tdex-daemon/tree/v1/resources/compose/docker-compose.yml):
 
 ```yml
-version: "3.7"
-
 services:
   oceand:
     container_name: oceand
@@ -26,8 +28,8 @@ services:
     ports:
       - "18000:18000"
     volumes:
-      - volumes/oceand:/home/ocean/.ocean-wallet
-      - volumes/ocean-cli:/home/ocean/.ocean-cli
+      - ./volumes/oceand:/home/ocean/.ocean-wallet
+      - ./volumes/ocean-cli:/home/ocean/.ocean-cli
   tdexd:
     container_name: tdexd
     image: ghcr.io/tdex-network/tdexd:latest
@@ -43,8 +45,8 @@ services:
       - "9000:9000"
       - "9945:9945"
     volumes:
-      - volumes/tdexd:/home/tdex/.tdex-daemon
-      - volumes/tdex-cli:/home/tdex/.tdex-operator
+      - ./volumes/tdexd:/home/tdex/.tdex-daemon
+      - ./volumes/tdex-cli:/home/tdex/.tdex-operator
   oceand-db:
     container_name: oceand-db
     image: postgres
@@ -78,13 +80,13 @@ Place this file in your preferred folder and name it `docker-compose.yml`, take 
 You're now ready to start up the services. First of all, let's start the ocean services:
 
 ```bash
-$ docker-compose up -d oceand-db oceand
+$ docker compose up -d oceand-db oceand
 ```
 
 You can inspect the status of the service by running `docker ps` - don't be afraid if oceand gives errors at this stage, it can happen depending on how fast the db startup phase is. Once both services are up and running you can start up your provider service:
 
 ```bash
-$ docker-compose up -d tdexd
+$ docker compose up -d tdexd
 ```
 
 That's it! You just started your provider served as docker container. What's next? You can get some insights about [the daemon's configuration](configure_daemon.md), or you can take a look at how to [configure the CLI](configure_cli.md) to setup your markets, deposit and withdraw funds and even more cool stuff.
