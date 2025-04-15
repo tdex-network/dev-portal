@@ -4,6 +4,7 @@ module.exports = {
   tagline: 'Trading Unleashed',
   url: 'https://dev.tdex.network',
   baseUrl: '/',
+  trailingSlash: true,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
@@ -128,7 +129,6 @@ module.exports = {
         sitemap: {
           changefreq: 'weekly',
           priority: 0.5,
-          trailingSlash: true,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
